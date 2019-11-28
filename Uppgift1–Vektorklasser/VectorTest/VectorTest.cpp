@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
-#include "Vector3.h"
+#include "Vector.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -141,9 +141,60 @@ namespace VectorTest
 
 			CommonUtilities::Vector3<float> myNormalizedVector = myDefaultVector.GetNormalized();
 
-			float testA = a / myDefaultVector.Length();
+			Assert::AreEqual(myNormalizedVector.Length(), 1.f);
+		}
+		TEST_METHOD(TestNormalize)
+		{
+			float a = 5;
+			float b = 0;
+			float c = 3;
 
-			Assert::AreEqual(myNormalizedVector, testA); 
+			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			myDefaultVector.Normalize();
+			Assert::AreEqual(myDefaultVector.Length(), 1.f);
+		}
+		TEST_METHOD(TestCrossVector)
+		{
+			float a = 5;
+			float b = 0;
+			float c = 3;
+
+			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+
+			float d = 5;
+			float e = 0;
+			float f = 1;
+
+			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(d, e, f);
+
+			CommonUtilities::Vector3<float> myCrossVector = myDefaultVector.Cross(myDefaultVector2);
+
+
+
+			Assert::AreEqual(myCrossVector.x, 0.f);
+			Assert::AreEqual(myCrossVector.y, 10.f);
+			Assert::AreEqual(myCrossVector.z, 0.f);
+		}
+
+		TEST_METHOD(TestDotProduct)
+		{
+			float a = 5;
+			float b = 0;
+			float c = 3;
+
+			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+
+			float d = 5;
+			float e = 0;
+			float f = 1;
+
+			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(d, e, f);
+
+			float myDotProduct = myDefaultVector.Dot(myDefaultVector2);
+
+
+
+			Assert::AreEqual(myDotProduct, 28.f);
 		}
 	};
 }

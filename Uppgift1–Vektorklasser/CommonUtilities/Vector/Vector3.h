@@ -52,8 +52,8 @@ namespace CommonUtilities
 	template<class T>
 	inline T Vector3<T>::LengthSqr() const
 	{
-		T lenght = (x * x) + (y * y) + (z * z);
-		return lenght;
+		T lenghtSqr = (x * x) + (y * y) + (z * z);
+		return lenghtSqr;
 	}
 
 	template<class T>
@@ -67,13 +67,13 @@ namespace CommonUtilities
 	inline Vector3<T> Vector3<T>::GetNormalized() const
 	{
 		T length = sqrt((x * x) + (y * y) + (z * z));
-		
+
 		T NormalScalar = T(1) / length;
 
 		T NormX = x * NormalScalar;
 		T NormY = y * NormalScalar;
 		T NormZ = z * NormalScalar;
-		Vector3<T> NormalizedVector = Vector3<T>(NormX,NormY,NormZ);
+		Vector3<T> NormalizedVector = Vector3<T>(NormX, NormY, NormZ);
 
 		return NormalizedVector;
 	}
@@ -82,24 +82,29 @@ namespace CommonUtilities
 	inline void Vector3<T>::Normalize()
 	{
 		T length = sqrt((x * x) + (y * y) + (z * z));
-
+		T NormalScalar = T(1) / length;
+		x *= NormalScalar;
+		y *= NormalScalar;
+		z *= NormalScalar;
 	}
 
 	template<class T>
 	inline T Vector3<T>::Dot(const Vector3<T>& aVector) const
 	{
-		return T();
+		T dot = (this->x * aVector.x) + (this->y * aVector.y) + (this->z*aVector.z);
+			
+		return dot;
 	}
 
 	template<class T>
 	inline Vector3<T> Vector3<T>::Cross(const Vector3<T>& aVector) const
 	{
-		return Vector3<T>();
+		T crossX= (this->y*aVector.z)-(this->z*aVector.y);
+		T crossY= (this->z * aVector.x) - (this->x * aVector.z);
+		T crossZ=(this->x * aVector.y) - (this->y * aVector.x);
+		Vector3<T> CrossVector = Vector3<T>(crossX,crossY,crossZ);
+		return CrossVector;
 	}
-
-
-
-
 
 	//Returns the vector sum of aVector0 and aVector1
 	template <class T> Vector3<T> operator+(const Vector3<T>& aVector0, const Vector3<T>& aVector1)
@@ -120,7 +125,7 @@ namespace CommonUtilities
 		return DifferenceVector;
 	}
 	//Returns the vector aVector multiplied by the scalar aScalar
-	template <class T> Vector3<T> operator*(const Vector3<T>& aVector, const T& aScalar) 
+	template <class T> Vector3<T> operator*(const Vector3<T>& aVector, const T& aScalar)
 	{
 		T x = aVector.x * aScalar;
 		T y = aVector.y * aScalar;
@@ -148,7 +153,7 @@ namespace CommonUtilities
 		return MultipliedVector;
 	}
 	//Equivalent to setting aVector0 to (aVector0 + aVector1)
-	template <class T> void operator+=(Vector3<T>& aVector0, const Vector3<T>& aVector1) 
+	template <class T> void operator+=(Vector3<T>& aVector0, const Vector3<T>& aVector1)
 	{
 		aVector0.x += aVector1.x;
 		aVector0.y += aVector1.y;
@@ -162,14 +167,14 @@ namespace CommonUtilities
 		aVector0.z -= aVector1.z;
 	}
 	//Equivalent to setting aVector to (aVector * aScalar)
-	template <class T> void operator*=(Vector3<T>& aVector, const T& aScalar) 
+	template <class T> void operator*=(Vector3<T>& aVector, const T& aScalar)
 	{
 		aVector.x *= aScalar;
 		aVector.y *= aScalar;
 		aVector.z *= aScalar;
 	}
 	//Equivalent to setting aVector to (aVector / aScalar)
-	template <class T> void operator/=(Vector3<T>& aVector, const T& aScalar) 
+	template <class T> void operator/=(Vector3<T>& aVector, const T& aScalar)
 	{
 		T multiScalar = 1 / aScalar;
 		aVector.x *= multiScalar;

@@ -1,0 +1,18 @@
+﻿  VectorTest.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(62,12): warning C4244:  'initializing': conversion from 'double' to 'T', possible loss of data
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(62,12): warning C4244:         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(62,12): warning C4244:         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(62,12): warning C4244:             T=int
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(62,12): warning C4244:         ]
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(61): message :  while compiling class template member function 'T CommonUtilities::Vector3<T>::Length(void) const'
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(61): message :         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(61): message :         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(61): message :             T=int
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\CommonUtilities\Vector\Vector3.h(61): message :         ]
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\VectorTest\VectorTest.cpp(35): message :  see reference to function template instantiation 'T CommonUtilities::Vector3<T>::Length(void) const' being compiled
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\VectorTest\VectorTest.cpp(35): message :         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\VectorTest\VectorTest.cpp(35): message :         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\VectorTest\VectorTest.cpp(35): message :             T=int
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\VectorTest\VectorTest.cpp(35): message :         ]
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\VectorTest\VectorTest.cpp(15): message :  see reference to class template instantiation 'CommonUtilities::Vector3<int>' being compiled
+  VectorTest.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift1–Vektorklasser\x64\Debug\VectorTest.dll

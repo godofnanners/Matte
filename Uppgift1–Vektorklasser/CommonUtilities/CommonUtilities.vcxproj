@@ -134,6 +134,7 @@
     <ClInclude Include="InputHandler\KeyBoardInputs.h" />
     <ClInclude Include="InputHandler\MouseInput.h" />
     <ClInclude Include="Timer\Timer.h" />
+    <ClInclude Include="Vector\Vector.h" />
     <ClInclude Include="Vector\Vector3.h" />
     <ClInclude Include="Vector\Vector4.h" />
     <ClInclude Include="Vector\Vector2.h" />

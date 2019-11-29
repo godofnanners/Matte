@@ -65,22 +65,36 @@ namespace CommonUtilities
 	{
 		T length = sqrt((x * x) + (y * y));
 
-		T NormalScalar = T(1) / length;
+		if (length == 0)
+		{
+			return Vector2<T>(x, y);
+		}
+		else
+		{
+			T NormalScalar = T(1) / length;
 
-		T NormX = x * NormalScalar;
-		T NormY = y * NormalScalar;
-		Vector2<T> NormalizedVector = Vector2<T>(NormX, NormY);
+			T NormX = x * NormalScalar;
+			T NormY = y * NormalScalar;
+			Vector2<T> NormalizedVector = Vector2<T>(NormX, NormY);
 
-		return NormalizedVector;
+			return NormalizedVector;
+		}
 	}
 
 	template<class T>
 	inline void Vector2<T>::Normalize()
 	{
 		T length = sqrt((x * x) + (y * y));
-		T NormalScalar = T(1) / length;
-		x *= NormalScalar;
-		y *= NormalScalar;
+		if (length == 0)
+		{
+			return;
+		}
+		else
+		{
+			T NormalScalar = T(1) / length;
+			x *= NormalScalar;
+			y *= NormalScalar;
+		}
 	}
 
 	template<class T>

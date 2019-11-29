@@ -70,26 +70,40 @@ namespace CommonUtilities
 	{
 		T length = sqrt((x * x) + (y * y) + (z * z) + (w * w));
 
-		T NormalScalar = T(1) / length;
+		if (length == 0)
+		{
+			return Vector4<T>(x, y, z, w);
+		}
+		else
+		{
+			T NormalScalar = T(1) / length;
 
-		T NormX = x * NormalScalar;
-		T NormY = y * NormalScalar;
-		T NormZ = z * NormalScalar;
-		T NormW = w * NormalScalar;
-		Vector4<T> NormalizedVector = Vector4<T>(NormX, NormY, NormZ, NormW);
+			T NormX = x * NormalScalar;
+			T NormY = y * NormalScalar;
+			T NormZ = z * NormalScalar;
+			T NormW = w * NormalScalar;
+			Vector4<T> NormalizedVector = Vector4<T>(NormX, NormY, NormZ, NormW);
+			return NormalizedVector;
+		}
 
-		return NormalizedVector;
 	}
 
 	template<class T>
 	inline void Vector4<T>::Normalize()
 	{
 		T length = sqrt((x * x) + (y * y) + (z * z) + (w * w));
-		T NormalScalar = T(1) / length;
-		x *= NormalScalar;
-		y *= NormalScalar;
-		z *= NormalScalar;
-		w *= NormalScalar;
+		if (length == 0)
+		{
+			return;
+		}
+		else
+		{
+			T NormalScalar = T(1) / length;
+			x *= NormalScalar;
+			y *= NormalScalar;
+			z *= NormalScalar;
+			w *= NormalScalar;
+		}
 	}
 
 	template<class T>

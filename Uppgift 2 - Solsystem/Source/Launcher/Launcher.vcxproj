@@ -73,7 +73,7 @@
       </PrecompiledHeader>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)DX2DEngine\;$(SolutionDir)Game\%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)DX2DEngine\;$(SolutionDir)Game\;%(AdditionalIncludeDirectories);$(SolutionDir)Game\;$(SolutionDir)CommonUtilities\</AdditionalIncludeDirectories>
       <WarningLevel>Level4</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -95,7 +95,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_RELEASE;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)DX2DEngine\;$(SolutionDir)Game\%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)DX2DEngine\;$(SolutionDir)Game\%(AdditionalIncludeDirectories);$(SolutionDir)Game\;$(SolutionDir)CommonUtilities\</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -121,7 +121,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_RETAIL;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)DX2DEngine\;$(SolutionDir)Game\%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)DX2DEngine\;$(SolutionDir)Game\%(AdditionalIncludeDirectories);$(SolutionDir)Game\;$(SolutionDir)CommonUtilities\</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -151,6 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="tga.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtilities\CommonUtilities.vcxproj">
+      <Project>{93b60f36-2fd8-4479-b1b9-aed1a7a4d9aa}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

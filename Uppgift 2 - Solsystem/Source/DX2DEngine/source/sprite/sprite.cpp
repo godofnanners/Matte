@@ -5,6 +5,7 @@
 #include "texture/texture_manager.h"
 #include "shaders/customshader.h"
 
+
 using namespace Tga2D;
 Tga2D::CSprite::CSprite(const char* aTexturePath)
 	:myQuad(nullptr)

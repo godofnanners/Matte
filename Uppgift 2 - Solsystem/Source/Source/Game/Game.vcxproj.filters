@@ -20,6 +20,7 @@
     <ClInclude Include="Sun.h" />
     <ClInclude Include="ChildPlanet.h" />
     <ClInclude Include="ChildMoon.h" />
+    <ClInclude Include="Body.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -30,5 +31,6 @@
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="ChildPlanet.cpp" />
     <ClCompile Include="ChildMoon.cpp" />
+    <ClCompile Include="Body.cpp" />
   </ItemGroup>
 </Project>

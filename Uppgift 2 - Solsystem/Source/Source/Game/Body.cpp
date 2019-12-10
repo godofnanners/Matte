@@ -5,36 +5,36 @@
 #include <tga2d/math/common_math.h>
 
 
-Body::Body(const CommonUtilities::Vector2<float> * aParentSpace,int anAmountOfChildren, Tga2D::CSprite* aSprite)
+Body::Body()
 {
 	myOrbitAngle = 0;
 	myOrbitAngleSpeed = 0;
 	myPosition = { 0,0 };
-	mySprite = aSprite;
-	myParentSpace = aParentSpace;
 	myRotation = 0;
 	myRotationSpeed = 0;
+	myParent = nullptr;
 }
 
-void Body::Init()
+Body::Body(const Body* aParent)
+{
+	myOrbitAngle = 0;
+	myOrbitAngleSpeed = 0;
+	myPosition = { 0,0 };
+	myRotation = 0;
+	myRotationSpeed = 0;
+	myParent = aParent;
+}
+
+void Body::Init(Tga2D::CSprite* aBodySprite, CommonUtilities::Vector2<float> aPosition, float aRotation, std::vector<Body>aChildreList = std::vector<Body>())
 {
 	myOrbitAngleSpeed = 20.f;
-	myPosition = CommonUtilities::Vector2(0.2f, 0.2f);
-	myRotationSpeed = 5;
-	mySprite = new Tga2D::CSprite("sprites/planet1.dds");
+	myPosition = aPosition;
+	myRotationSpeed = aRotation;
+	mySprite = aBodySprite;
+	myChildren = aChildreList;
+	mySprite = aBodySprite;
 	mySprite->SetPivot({ 0.5f,0.5f });
 	mySprite->SetRotation(myRotation);
-
-	for (int i = 0; i < myChildren.size(); i++)
-	{
-		myChildren.push_back(Body(myWorldPosition,))
-	}
-
-	for (size_t i = 0; i < myChildren.size(); i++)
-	{
-		myChildren[i].Init();
-	}
-
 }
 void Body::Update(float aTimeDelta)
 {
@@ -53,16 +53,24 @@ void Body::Update(float aTimeDelta)
 	mySprite->SetRotation(myRotation);
 	myWorldPosition = GetWorldPosition();
 	mySprite->SetPosition({ GetWorldPosition().x  ,GetWorldPosition().y });
-	myChildMoon->Update(aTimeDelta);
+
+	for (int i = 0; i < myChildren.size(); i++)
+	{
+		myChildren[i].Update(aTimeDelta);
+	}
+
 }
 
-CommonUtilities::Vector2<float> Body::GetWorldPosition()
+const CommonUtilities::Vector2<float> Body::GetWorldPosition() const
 {
-	return { myPosition.x * Tga2D::CEngine::GetInstance()->GetWindowRatioInversed() + myParentSpace.x, myPosition.y + myParentSpace.y };
+	return { myPosition.x * Tga2D::CEngine::GetInstance()->GetWindowRatioInversed() + myParent->GetWorldPosition().x, myPosition.y + myParent->GetWorldPosition().y };
 }
 
 void Body::Draw()
 {
 	mySprite->Render();
-	myChildMoon->Draw();
+	for (int i = 0; i < myChildren.size(); i++)
+	{
+		myChildren[i].Draw();
+	}
 }

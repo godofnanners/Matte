@@ -1,0 +1,4 @@
+﻿  Body.cpp
+  GameWorld.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 2 - Solsystem\Source\Source\Game\Body.cpp(28,155): error C2572:  'Body::Init': redefinition of default argument: parameter 1
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 2 - Solsystem\Source\Source\Game\Body.h(15): message :  see declaration of 'Body::Init'

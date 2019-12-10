@@ -16,11 +16,26 @@ CGameWorld::~CGameWorld()
 
 void CGameWorld::Init()  
 {
+	std::vector<Body>MyMoons = std::vector<Body>();
+	std::vector<Body>MyPlanets = std::vector<Body>();
+
+	
+
+	for (int i = 0; i < 1; i++)
+	{
+		MyPlanets.push_back(Body(&mySun));
+	}
+	for (int i = 0; i < 1; i++)
+	{
+		MyMoons.push_back(Body(&(myPlanets[0])));
+	}
+
+
 	mySpriteRotation = 0;
 	myTga2dLogoSprite = new Tga2D::CSprite("sprites/tga_logo.dds");
 	myTga2dLogoSprite->SetPivot({ 0.5f, 0.5f });
 	myTga2dLogoSprite->SetPosition({ 0.5f, 0.5f });
-	mySun.Init();
+	mySun.Init(new Tga2D::CSprite("sprites/tga_logo.dds"),CommonUtilities::Vector2(0.5f,0.5f),5);
 }
 
 

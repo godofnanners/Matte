@@ -10,14 +10,14 @@ class Body
 {
 
 public:
-	Body() = delete;
-	Body(const CommonUtilities::Vector2<float>* aParentSpace, int anAmountOfChildren, Tga2D::CSprite* aSprite);
-	void Init();
+	Body();
+	Body(const Body * aParent);
+	void Init(Tga2D::CSprite* aBodySprite, CommonUtilities::Vector2<float> aPosition, float aRotation, std::vector<Body>aChildreList = std::vector<Body>());
 	void Update(float aTimeDelta);
-	CommonUtilities::Vector2<float> GetWorldPosition();
+	const CommonUtilities::Vector2<float> GetWorldPosition() const;
 	void Draw();
 private:
-	const CommonUtilities::Vector2<float> * myParentSpace;
+	const Body * myParent;
 	CommonUtilities::Vector2<float> myPosition;
 	CommonUtilities::Vector2<float> myWorldPosition;
 	float myRotation;

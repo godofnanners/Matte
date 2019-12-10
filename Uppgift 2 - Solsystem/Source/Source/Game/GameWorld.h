@@ -1,5 +1,6 @@
 #pragma once
 #include "Sun.h"
+#include "Body.h"
 namespace Tga2D
 {
 	class CSprite;
@@ -14,7 +15,9 @@ public:
 	void Init();
 	void Update(float aTimeDelta); 
 private:
-	Sun mySun;
+	Body mySun;
+	std::vector<Body> myPlanets;
+	std::vector<Body> myMoons;
 	Tga2D::CSprite* myTga2dLogoSprite;
 	float mySpriteRotation;
 };

@@ -17,9 +17,6 @@
     <ClInclude Include="resource.h">
       <Filter>Precompiled</Filter>
     </ClInclude>
-    <ClInclude Include="Sun.h" />
-    <ClInclude Include="ChildPlanet.h" />
-    <ClInclude Include="ChildMoon.h" />
     <ClInclude Include="Body.h" />
   </ItemGroup>
   <ItemGroup>
@@ -28,9 +25,6 @@
     </ClCompile>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameWorld.cpp" />
-    <ClCompile Include="Sun.cpp" />
-    <ClCompile Include="ChildPlanet.cpp" />
-    <ClCompile Include="ChildMoon.cpp" />
     <ClCompile Include="Body.cpp" />
   </ItemGroup>
 </Project>

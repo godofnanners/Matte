@@ -1,6 +1,5 @@
 #pragma once
 #include "Vector/Vector2.h"
-#include "ChildMoon.h"
 #include <vector>
 namespace Tga2D
 {
@@ -12,7 +11,7 @@ class Body
 public:
 	Body();
 	Body(const Body * aParent);
-	void Init(Tga2D::CSprite* aBodySprite, CommonUtilities::Vector2<float> aPosition, float aRotation, std::vector<Body>aChildreList = std::vector<Body>());
+	void Init(Tga2D::CSprite* aBodySprite, CommonUtilities::Vector2<float> aPosition, float aRotation, float anOrbitRotation,std::vector<Body>*aChildreList = nullptr);
 	void Update(float aTimeDelta);
 	const CommonUtilities::Vector2<float> GetWorldPosition() const;
 	void Draw();
@@ -26,7 +25,7 @@ private:
 	float myOrbitAngleSpeed;
 	int myAmountOfChildren;
 	Tga2D::CSprite* mySprite;
-	std::vector<Body>myChildren;
+	std::vector<Body>* myChildren;
 };
 
 

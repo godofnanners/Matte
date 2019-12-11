@@ -1,5 +1,4 @@
 #pragma once
-#include "Sun.h"
 #include "Body.h"
 namespace Tga2D
 {

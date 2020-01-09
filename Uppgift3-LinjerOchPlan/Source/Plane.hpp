@@ -5,6 +5,7 @@ namespace CommonUtilities
 	template <class T>
 	class Plane
 	{
+	public:
 		// Default constructor.
 		Plane();
 		// Constructor taking three points where the normal is (aPoint1 - aPoint0) x (aPoint2-aPoint0).
@@ -19,6 +20,7 @@ namespace CommonUtilities
 		bool IsInside(const Vector3<T>& aPosition) const;
 		// Returns the normal of the plane.
 		const Vector3<T>& GetNormal() const;
+	private:
 		Vector3<T> myPoint;
 		Vector3<T> myNormal;
 	};

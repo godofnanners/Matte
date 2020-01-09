@@ -168,6 +168,8 @@
     </ClCompile>
     <ClCompile Include="TestLine.cpp" />
     <ClCompile Include="TestLineVolume.cpp" />
+    <ClCompile Include="TestPlane.cpp" />
+    <ClCompile Include="TestPlaneVolume.cpp" />
     <ClCompile Include="Uppgift3-LinjerOchPlan.cpp" />
   </ItemGroup>
   <ItemGroup>

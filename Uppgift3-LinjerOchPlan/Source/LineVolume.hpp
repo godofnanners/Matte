@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include "Line.hpp"
-namespace CommonUtilities {
+namespace CommonUtilities 
+{
 
 	template<class T>
 	class LineVolume

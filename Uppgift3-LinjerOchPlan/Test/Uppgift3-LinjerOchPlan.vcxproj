@@ -167,6 +167,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TestLine.cpp" />
+    <ClCompile Include="TestLineVolume.cpp" />
     <ClCompile Include="Uppgift3-LinjerOchPlan.cpp" />
   </ItemGroup>
   <ItemGroup>

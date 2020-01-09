@@ -49,14 +49,16 @@ namespace CommonUtilities
 	template<class T>
 	inline Line<T>::Line(const Vector2<T>& aPoint0, const Vector2<T>& aPoint1)
 	{
-		myDirection = aPoint1 - aPoint0;
+		Vector2<T>unNormalizedDir = (aPoint1 - aPoint0);
+		myDirection = unNormalizedDir.GetNormalized();
 		myPoint = aPoint0;
 		myNormal = { -myDirection.y,myDirection.x };
 	}
 	template<class T>
 	inline void Line<T>::InitWith2Points(const Vector2<T>& aPoint0, const Vector2<T>& aPoint1)
 	{
-		myDirection = aPoint1 - aPoint0;
+		Vector2<T>unNormalizedDir = (aPoint1 - aPoint0);
+		myDirection = unNormalizedDir.GetNormalized();
 		myPoint = aPoint0;
 		myNormal = { -myDirection.y,myDirection.x };
 	}
@@ -64,14 +66,14 @@ namespace CommonUtilities
 	inline void Line<T>::InitWithPointAndDirection(const Vector2<T>& aPoint, const Vector2<T>& aDirection)
 	{
 		myPoint = aPoint;
-		myDirection = aDirection;
+		myDirection = aDirection.GetNormalized();
 		myNormal = { -myDirection.y,myDirection.x };
 	}
 	template<class T>
 	inline bool Line<T>::IsInside(const Vector2<T>& aPosition) const
 	{
 		Vector2<T> differenceVector = aPosition - myPoint;
-		if (( differenceVector * myNormal) =< 0)
+		if (( differenceVector.Dot(myNormal)) <= 0)
 		{
 			return true;
 		}

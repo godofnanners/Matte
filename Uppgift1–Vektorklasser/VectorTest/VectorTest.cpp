@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
-#include "Vector.h"
+#include "Vector/Vector3 Code/math/vector/vector.hpp"
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,7 +13,7 @@ namespace VectorTest
 
 		TEST_METHOD(TestNullVector)
 		{
-			CommonUtilities::Vector3<int> myDefaultVector = CommonUtilities::Vector3<int>();
+			alib::Math::Vector3<int> myDefaultVector = alib::Math::Vector3<int>();
 			Assert::IsTrue(myDefaultVector.x == NULL && myDefaultVector.y == NULL && myDefaultVector.z == NULL, L"Vector isnt NULL");
 		}
 
@@ -22,7 +23,7 @@ namespace VectorTest
 			int b = 2;
 			int c = 3;
 
-			CommonUtilities::Vector3<int> myDefaultVector = CommonUtilities::Vector3<int>(a, b, c);
+			alib::Math::Vector3<int> myDefaultVector = alib::Math::Vector3<int>(a, b, c);
 			Assert::IsTrue(myDefaultVector.x == a && myDefaultVector.y == b && myDefaultVector.z == c, L"Vector isnt created with correct numbers");
 		}
 		TEST_METHOD(TestLenghtOfVector)
@@ -31,7 +32,7 @@ namespace VectorTest
 			int b = 1;
 			int c = 2;
 
-			CommonUtilities::Vector3<int> myDefaultVector = CommonUtilities::Vector3<int>(a, b, c);
+			alib::Math::Vector3<int> myDefaultVector = alib::Math::Vector3<int>(a, b, c);
 			Assert::IsTrue(myDefaultVector.Length() == 3, L"Lenght is not correct");
 
 		}
@@ -42,7 +43,7 @@ namespace VectorTest
 			int b = 1;
 			int c = 2;
 
-			CommonUtilities::Vector3<int> myDefaultVector = CommonUtilities::Vector3<int>(a, b, c);
+			alib::Math::Vector3<int> myDefaultVector = alib::Math::Vector3<int>(a, b, c);
 			Assert::IsTrue(myDefaultVector.LengthSqr() == 9, L"Sqr Lenght is not correct");
 		}
 
@@ -52,8 +53,8 @@ namespace VectorTest
 			float b = 1;
 			float c = 2;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
-			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector2 = alib::Math::Vector3<float>(a, b, c);
 
 			myDefaultVector = myDefaultVector + myDefaultVector2;
 			Assert::IsTrue(myDefaultVector.x == a + a && myDefaultVector.y == b + b && myDefaultVector.z == c + c, L"addition of vector doesnt work");
@@ -64,8 +65,8 @@ namespace VectorTest
 			float b = 1;
 			float c = 2;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
-			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector2 = alib::Math::Vector3<float>(a, b, c);
 
 			myDefaultVector += myDefaultVector2;
 			Assert::IsTrue(myDefaultVector.x == a + a && myDefaultVector.y == b + b && myDefaultVector.z == c + c, L"addition of vector doesnt work");
@@ -76,8 +77,8 @@ namespace VectorTest
 			float b = 1;
 			float c = 2;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
-			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector2 = alib::Math::Vector3<float>(a, b, c);
 
 			myDefaultVector = myDefaultVector - myDefaultVector2;
 			Assert::IsTrue(myDefaultVector.x == a - a && myDefaultVector.y == b - b && myDefaultVector.z == c - c, L"addition of vector doesnt work");
@@ -88,8 +89,8 @@ namespace VectorTest
 			float b = 1;
 			float c = 2;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
-			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector2 = alib::Math::Vector3<float>(a, b, c);
 
 			myDefaultVector -= myDefaultVector2;
 			Assert::IsTrue(myDefaultVector.x == a - a && myDefaultVector.y == b - b && myDefaultVector.z == c - c, L"addition of vector doesnt work");
@@ -101,19 +102,19 @@ namespace VectorTest
 			float b = 1;
 			float c = 2;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 			float scalar = 3.0f;
 
 			myDefaultVector = myDefaultVector * scalar;
 			Assert::IsTrue(myDefaultVector.x == a * scalar && myDefaultVector.y == b * scalar && myDefaultVector.z == c * scalar, L"multiplie scalar with vector doesnt work");
 
 
-			myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 
 			myDefaultVector = scalar * myDefaultVector;
 			Assert::IsTrue(myDefaultVector.x == a * scalar && myDefaultVector.y == b * scalar && myDefaultVector.z == c * scalar, L"multiplie scalar with vector doesnt work");
 
-			myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 
 			myDefaultVector *= scalar;
 			Assert::IsTrue(myDefaultVector.x == a * scalar && myDefaultVector.y == b * scalar && myDefaultVector.z == c * scalar, L"multiplie scalar with vector doesnt work");
@@ -125,7 +126,7 @@ namespace VectorTest
 			float b = 1;
 			float c = 2;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 			float scalar = 3.0f;
 
 			myDefaultVector = myDefaultVector / scalar;
@@ -137,9 +138,9 @@ namespace VectorTest
 			float b = 0;
 			float c = 3;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 
-			CommonUtilities::Vector3<float> myNormalizedVector = myDefaultVector.GetNormalized();
+			alib::Math::Vector3<float> myNormalizedVector = myDefaultVector.GetNormalized();
 
 			Assert::AreEqual(myNormalizedVector.Length(), 1.f);
 		}
@@ -149,7 +150,7 @@ namespace VectorTest
 			float b = 0;
 			float c = 3;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 			myDefaultVector.Normalize();
 			Assert::AreEqual(myDefaultVector.Length(), 1.f);
 		}
@@ -159,15 +160,15 @@ namespace VectorTest
 			float b = 0;
 			float c = 3;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 
 			float d = 5;
 			float e = 0;
 			float f = 1;
 
-			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(d, e, f);
+			alib::Math::Vector3<float> myDefaultVector2 = alib::Math::Vector3<float>(d, e, f);
 
-			CommonUtilities::Vector3<float> myCrossVector = myDefaultVector.Cross(myDefaultVector2);
+			alib::Math::Vector3<float> myCrossVector = myDefaultVector.Cross(myDefaultVector2);
 
 
 
@@ -182,13 +183,13 @@ namespace VectorTest
 			float b = 0;
 			float c = 3;
 
-			CommonUtilities::Vector3<float> myDefaultVector = CommonUtilities::Vector3<float>(a, b, c);
+			alib::Math::Vector3<float> myDefaultVector = alib::Math::Vector3<float>(a, b, c);
 
 			float d = 5;
 			float e = 0;
 			float f = 1;
 
-			CommonUtilities::Vector3<float> myDefaultVector2 = CommonUtilities::Vector3<float>(d, e, f);
+			alib::Math::Vector3<float> myDefaultVector2 = alib::Math::Vector3<float>(d, e, f);
 
 			float myDotProduct = myDefaultVector.Dot(myDefaultVector2);
 

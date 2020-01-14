@@ -1,11 +1,17 @@
 #pragma once
+#include "..//Test/pch.h"
 #include <random>
 namespace CommonUtilities
 {
-	static std::random_device globalSeed;
+	class Random
+	{
+	public:
+		static std::random_device globalSeed;
 
-	float GetRandomFloat(float aMin = -100000.0f, float aMax = 100000.0f);
-	double GetRandomDouble(double aMin = -100000.0, double aMax = 100000.0);
-	int GetRandomInt(int aMin = -100000, int aMax = 100000);
-}
+		float GetRandomFloat(float aMin = -100000.0f, float aMax = 100000.0f);
+		double GetRandomDouble(double aMin = -100000.0, double aMax = 100000.0);
+		int GetRandomInt(int aMin = -100000, int aMax = 100000);
+	};
+	
+};
 

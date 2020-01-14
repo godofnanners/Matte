@@ -55,11 +55,13 @@ namespace CommonUtilities
 	template<class T>
 	inline T& Matrix3x3<T>::operator()(const int aRow, const int aColumn)
 	{
+		return myMatrix.twoDim[aRow][aColumn];
 		// TODO: insert return statement here
 	}
 	template<class T>
 	inline const T& Matrix3x3<T>::operator()(const int aRow, const int aColumn) const
 	{
+		return myMatrix.twoDim[aRow][aColumn];
 		// TODO: insert return statement here
 	}
 	template<class T>

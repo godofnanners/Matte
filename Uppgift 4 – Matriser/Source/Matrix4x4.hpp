@@ -114,6 +114,14 @@ namespace CommonUtilities
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator*(Matrix4x4<T>& aMatrix)
 	{
+		for (int i = 0; i < twoDimSize; i++)
+		{
+			for (int j = 0; j < twoDimSize; j++)
+			{
+
+			}
+			myMatrix.twoDim[]
+		}
 		return Matrix4x4<T>();
 	}
 	template<class T>

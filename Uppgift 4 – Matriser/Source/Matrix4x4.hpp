@@ -67,13 +67,13 @@ namespace CommonUtilities
 	inline T& Matrix4x4<T>::operator()(const int aRow, const int aColumn)
 	{
 		// TODO: insert return statement here
-		return myMatrix.twoDim[aRow-1][aColumn-1];
+		return myMatrix.twoDim[aRow - 1][aColumn - 1];
 	}
 	template<class T>
 	inline const T& Matrix4x4<T>::operator()(const int aRow, const int aColumn) const
 	{
 		// TODO: insert return statement here
-		return myMatrix.twoDim[aRow-1][aColumn-1];
+		return myMatrix.twoDim[aRow - 1][aColumn - 1];
 	}
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator+(Matrix4x4<T>& aMatrix)
@@ -114,29 +114,56 @@ namespace CommonUtilities
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator*(Matrix4x4<T>& aMatrix)
 	{
-		for (int i = 0; i < twoDimSize; i++)
+		Matrix4x4<T>multMatrix;
+		int multMatIndex = 0;
+		T sum = 0;
+		for (int lMatRow = 0; lMatRow < twoDimSize; lMatRow++)
 		{
-			for (int j = 0; j < twoDimSize; j++)
+			for (int rMatCol = 0; rMatCol < twoDimSize; rMatCol++)
 			{
-
+				sum = 0;
+				for (int lMatColrMatRow = 0; lMatColrMatRow < twoDimSize; lMatColrMatRow++)
+				{
+					sum += myMatrix.twoDim[lMatRow][lMatColrMatRow] * aMatrix.myMatrix.twoDim[lMatColrMatRow][rMatCol];
+				}
+				multMatrix.myMatrix.oneDim[multMatIndex] = sum;
+				++multMatIndex;
 			}
-			myMatrix.twoDim[]
 		}
-		return Matrix4x4<T>();
+		return multMatrix;
 	}
 	template<class T>
 	inline void Matrix4x4<T>::operator*=(Matrix4x4<T>& aMatrix)
 	{
+		Matrix4x4<T>multMatrix;
+		int multMatIndex = 0;
+		T sum = 0;
+		for (int lMatRow = 0; lMatRow < twoDimSize; lMatRow++)
+		{
+			for (int rMatCol = 0; rMatCol < twoDimSize; rMatCol++)
+			{
+				sum = 0;
+				for (int lMatColrMatRow = 0; lMatColrMatRow < twoDimSize; lMatColrMatRow++)
+				{
+					sum += myMatrix.twoDim[lMatRow][lMatColrMatRow] * aMatrix.myMatrix.twoDim[lMatColrMatRow][rMatCol];
+				}
+				multMatrix.myMatrix.oneDim[multMatIndex] = sum;
+				++multMatIndex;
+			}
+		}
+		*this = multMatrix;
 	}
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator*(Vector4<T>& aVector4)
 	{
+
 		return Matrix4x4<T>();
 	}
 
 	template<class T>
 	inline void Matrix4x4<T>::operator*=(Vector4<T>& aVector4)
 	{
+
 	}
 
 	template<class T>
@@ -156,7 +183,14 @@ namespace CommonUtilities
 	template<class T>
 	inline bool Matrix4x4<T>::operator==(const Matrix4x4<T>& aMatrixlhs) const
 	{
-		return false;
+		for (int i = 0; i < OneDimSize; i++)
+		{
+			if (myMatrix.oneDim[i] != aMatrixlhs.myMatrix.oneDim[i])
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	template<class T>

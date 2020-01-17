@@ -1,2 +1,6 @@
 ﻿  Matrix4x4Tests.cpp
-  Uppgift 4 – Matriser.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 4 – Matriser\Test\x64\Debug\Uppgift 4 – Matriser.dll
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 4 – Matriser\Source\Matrix4x4.hpp(206,56): error C2065:  'twoDimSize': undeclared identifier
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 4 – Matriser\Test\Matrix4x4Tests.cpp(573): message :  see reference to function template instantiation 'CommonUtilities::Vector4<float> CommonUtilities::operator *<float>(const CommonUtilities::Vector4<float> &,const CommonUtilities::Matrix4x4<float> &)' being compiled
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 4 – Matriser\Source\Matrix4x4.hpp(208,21): error C2065:  'lMatColrMatRow': undeclared identifier
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 4 – Matriser\Source\Matrix4x4.hpp(210,30): error C2676:  binary '[': 'CommonUtilities::Vector4<float>' does not define this operator or a conversion to a type acceptable to the predefined operator
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 4 – Matriser\Source\Matrix4x4.hpp(210,30): error C2676:  binary '[': 'CommonUtilities::Vector4<double>' does not define this operator or a conversion to a type acceptable to the predefined operator

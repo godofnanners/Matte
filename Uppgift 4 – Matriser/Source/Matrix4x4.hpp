@@ -21,7 +21,7 @@ namespace CommonUtilities
 		void operator-=(Matrix4x4<T>& aMatrix);
 		Matrix4x4<T> operator*(Matrix4x4<T>& aMatrix);
 		void operator*=(Matrix4x4<T>& aMatrix);
-		Matrix4x4<T> operator*(Vector4<T>& aVector4);
+		Vector4<T> operator*(Vector4<T>& aVector4);
 		void operator*=(Vector4<T>& aVector4);
 		void operator=(Matrix4x4<T>& aMatrix);
 		bool operator==(const Matrix4x4<T>& aMatrixlhs)const;
@@ -154,22 +154,66 @@ namespace CommonUtilities
 		*this = multMatrix;
 	}
 	template<class T>
-	inline Matrix4x4<T> Matrix4x4<T>::operator*(Vector4<T>& aVector4)
+	inline Vector4<T> Matrix4x4<T>::operator*(Vector4<T>& aVector4)
 	{
+		Vector4<T>multVector;
+		int multMatIndex = 0;
+		T sum = 0;
+		for (int lMatRow = 0; lMatRow < twoDimSize; lMatRow++)
+		{
+			sum = 0;
+			for (int lMatColrVectorRow = 0; lMatColrVectorRow < twoDimSize; lMatColrVectorRow++)
+			{
+				sum += myMatrix.twoDim[lMatRow][lMatColrMatRow] * aVector[lMatColrVectorRow];
+			}
+			multVector[multVectorIndex] = sum;
+			++multVectorIndex;
+		}
 
-		return Matrix4x4<T>();
+		return multVector;
 	}
 
 	template<class T>
 	inline void Matrix4x4<T>::operator*=(Vector4<T>& aVector4)
 	{
+		Vector4<T>multVector;
+		int multMatIndex = 0;
+		T sum = 0;
+		for (int lMatRow = 0; lMatRow < twoDimSize; lMatRow++)
+		{
+			sum = 0;
+			for (int lMatColrVectorRow = 0; lMatColrVectorRow < twoDimSize; lMatColrVectorRow++)
+			{
+				sum += myMatrix.twoDim[lMatRow][lMatColrMatRow] * aVector[lMatColrVectorRow];
+			}
+			multVector[multVectorIndex] = sum;
+			++multVectorIndex;
+		}
 
 	}
 
 	template<class T>
 	inline Vector4<T> operator*(const Vector4<T>& aVector4, const Matrix4x4<T>& aMatrix)
 	{
-		return Vector4<T>();
+
+		Vector4<T>multVector;
+		int multVectorIndex = 0;
+		T sum = 0;
+
+		for (int rMatCol = 0; rMatCol < 4; rMatCol++)
+		{
+			sum = 0;
+			for (int lVectorColrMatRow = 0; lVectorColrMatRow < twoDimSize; lVectorColrMatRow++)
+			{
+				sum += aVector4[lVectorColrMatRow] * aMatrix(lVectorColrMatRow,rMatCol);
+			}
+			multVector[multVectorIndex] = sum;
+			++multVectorIndex;
+		}
+
+
+
+		return multVector;
 	}
 
 	template<class T>
@@ -196,21 +240,25 @@ namespace CommonUtilities
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::CreateRotationAroundX(T aAngleInRadians)
 	{
+
 		return Matrix4x4<T>();
 	}
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::CreateRotationAroundY(T aAngleInRadians)
 	{
+
 		return Matrix4x4<T>();
 	}
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::CreateRotationAroundZ(T aAngleInRadians)
 	{
+
 		return Matrix4x4<T>();
 	}
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::Transpose(const Matrix4x4<T>& aMatrixToTranspose)
 	{
+
 		return Matrix4x4<T>();
 	}
 }

@@ -6,10 +6,14 @@ namespace CommonUtilities
 	class Vector4
 	{
 	public:
-		T x;
-		T y;
-		T z;
-		T w;
+		union
+		{
+			T x;
+			T y;
+			T z;
+			T w;
+			T[4];
+		};
 		//Creates a null-vector
 		Vector4<T>();
 		//Creates a vector (aX, aY, aZ, aW)

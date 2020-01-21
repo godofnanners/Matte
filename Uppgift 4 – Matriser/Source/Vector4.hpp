@@ -1,19 +1,18 @@
 #pragma once
 #include <math.h>
+#include <assert.h>
 namespace CommonUtilities
 {
 	template <class T>
 	class Vector4
 	{
 	public:
-		union
-		{
-			T x;
-			T y;
-			T z;
-			T w;
-			T[4];
-		};
+		T x;
+		T y;
+		T z;
+		T w;
+		int arrayFormatSize = 4;
+
 		//Creates a null-vector
 		Vector4<T>();
 		//Creates a vector (aX, aY, aZ, aW)
@@ -22,6 +21,10 @@ namespace CommonUtilities
 		Vector4<T>(const Vector4<T>& aVector) = default;
 		//Assignment operator (compiler generated)
 		Vector4<T>& operator=(const Vector4<T>& aVector4) = default;
+		T& operator[](const int& aIndex);
+		const T& operator[](const int& aIndex) const;
+
+		T GetFromArrayFormat(const int& aNumber);
 		//Destructor (compiler generated)
 		~Vector4<T>() = default;
 		//Returns the squared length of the vector
@@ -53,6 +56,78 @@ namespace CommonUtilities
 		y = aY;
 		z = aZ;
 		w = aW;
+	}
+
+
+
+	template<class T>
+	inline T& Vector4<T>::operator[](const int& aIndex)
+	{
+		assert(aIndex < arrayFormatSize && L"Number is bigger than array");
+		assert(aIndex >= 0  && L"Number is below zero (minimum of array)");
+		if (aIndex == 0)
+		{
+			return x;
+		}
+		else if (aIndex == 1)
+		{
+			return y;
+		}
+		else if (aIndex == 2)
+		{
+			return z;
+		}
+		else if (aIndex == 3)
+		{
+			return w;
+		}
+		// TODO: insert return statement here
+	}
+
+	template<class T>
+	inline const T& Vector4<T>::operator[](const int& aIndex) const
+	{
+		assert(aIndex < arrayFormatSize && L"Number is bigger than array");
+		assert(aIndex >= 0 && L"Number is below zero (minimum of array)");
+		if (aIndex == 0)
+		{
+			return x;
+		}
+		else if (aIndex == 1)
+		{
+			return y;
+		}
+		else if (aIndex == 2)
+		{
+			return z;
+		}
+		else if (aIndex == 3)
+		{
+			return w;
+		}
+	}
+
+	template<class T>
+	inline T Vector4<T>::GetFromArrayFormat(const int& aNumber)
+	{
+		assert(aNumber < arrayFormatSize && L"Number is bigger than array");
+		assert(aNumber >= 0 arrayFormatSize && L"Number is below zero (minimum of array)");
+		if (0)
+		{
+			return x;
+		}
+		else if (1)
+		{
+			return y;
+		}
+		else if (2)
+		{
+			return z;
+		}
+		else if (3)
+		{
+			return w;
+		}
 	}
 
 	template<class T>
@@ -202,4 +277,6 @@ namespace CommonUtilities
 		aVector.z *= multiScalar;
 		aVector.w *= multiScalar;
 	}
+
+
 }

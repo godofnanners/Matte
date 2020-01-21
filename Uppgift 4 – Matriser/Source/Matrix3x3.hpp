@@ -4,9 +4,12 @@
 #include "Vector4.hpp"
 namespace CommonUtilities
 {
+
 	template<class T>
 	class Matrix3x3
 	{
+	/*#define TWODIMSIZE 3
+	#define ONEDIMSIZE 9*/
 	public:
 		// Creates the identity matrix.
 		Matrix3x3<T>();
@@ -42,14 +45,20 @@ namespace CommonUtilities
 	template<class T>
 	inline Matrix3x3<T>::Matrix3x3()
 	{
-
+		for (int i = 0; i < ONEDIMSIZE; i++)
+		{
+			if (i == 0 || i == 5 || i == 10 || i == 15)
+			{
+				myMatrix.oneDim[i] = 1;
+			}
+			else
+			{
+				myMatrix.oneDim[i] = 0;
+			}
+		}
 	}
 	template<class T>
 	inline Matrix3x3<T>::Matrix3x3(const Matrix3x3<T>& aMatrix)
-	{
-	}
-	template<class T>
-	inline Matrix3x3<T>::Matrix3x3(const Matrix4x4<T>& aMatrix)
 	{
 	}
 	template<class T>
@@ -63,6 +72,24 @@ namespace CommonUtilities
 	{
 		return myMatrix.twoDim[aRow][aColumn];
 		// TODO: insert return statement here
+	}
+	template<class T>
+	inline Matrix3x3<T> Matrix3x3<T>::operator+(Matrix3x3<T>& aMatrix)
+	{
+		return Matrix3x3<T>();
+	}
+	template<class T>
+	inline void Matrix3x3<T>::operator+=(Matrix3x3<T>& aMatrix)
+	{
+	}
+	template<class T>
+	inline Matrix3x3<T> Matrix3x3<T>::operator-(Matrix3x3<T>& aMatrix)
+	{
+		return Matrix3x3<T>();
+	}
+	template<class T>
+	inline void Matrix3x3<T>::operator-=(Matrix3x3<T>& aMatrix)
+	{
 	}
 	template<class T>
 	Vector3<T> operator*(Vector3<T>& aVector3, Matrix3x3<T>& aMatrix)
@@ -89,5 +116,23 @@ namespace CommonUtilities
 	inline Matrix3x3<T> Matrix3x3<T>::Transpose(const Matrix3x3<T>& aMatrixToTranspose)
 	{
 		return Matrix3x3<T>();
+	}
+	template<class T>
+	inline Matrix3x3<T> Matrix3x3<T>::operator*(Matrix3x3<T>& aMatrix)
+	{
+		return Matrix3x3<T>();
+	}
+	template<class T>
+	inline void Matrix3x3<T>::operator*=(Matrix3x3<T>& aMatrix)
+	{
+	}
+	template<class T>
+	inline void Matrix3x3<T>::operator=(Matrix3x3<T>& aMatrix)
+	{
+	}
+	template<class T>
+	inline bool Matrix3x3<T>::operator==(const Matrix3x3<T>& aMatrix) const
+	{
+		return false;
 	}
 }

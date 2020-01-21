@@ -161,6 +161,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Random\Random.cpp" />
+    <ClCompile Include="Matrix3x3Tests.cpp" />
     <ClCompile Include="Matrix4x4Tests.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -169,6 +170,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Uppgift 4 – Matriser.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Matrix.hpp" />
@@ -176,6 +178,7 @@
     <ClInclude Include="..\Source\Matrix4x4.hpp" />
     <ClInclude Include="..\Source\Random\Random.hpp" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Utility.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

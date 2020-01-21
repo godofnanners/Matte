@@ -1,14 +1,12 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "Random/Random.hpp"
+
+#include "Utility.hpp"
 #include "Matrix3x3.hpp"
 //#include "Student Code/Matrix3x3.h"
 
-
-
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-CommonUtilities::Random rnd;
-#define TestUtility rnd
+
 using Matrix3x3f = CommonUtilities::Matrix3x3<float>;
 using Matrix3x3d = CommonUtilities::Matrix3x3<double>;
 using Matrix4x4f = CommonUtilities::Matrix4x4<float>;
@@ -26,7 +24,7 @@ namespace Assignment4Matrices
 		{
 			// Test the Matrix3x3<float> default constructor.
 			Matrix3x3f matrixF;
-			
+
 			for (unsigned int col = 1; col <= ourColumnCount; ++col)
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
@@ -56,7 +54,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					sourceF(row, col) = TestUtility.GetRandomFloat();
+					sourceF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -78,7 +76,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					sourceD(row, col) = TestUtility.GetRandomDouble();
+					sourceD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -103,7 +101,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= 4; ++row)
 				{
-					sourceF(row, col) = TestUtility.GetRandomFloat();
+					sourceF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -124,7 +122,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= 4; ++row)
 				{
-					sourceD(row, col) = TestUtility.GetRandomDouble();
+					sourceD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -148,7 +146,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					sourceF(row, col) = TestUtility.GetRandomFloat();
+					sourceF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -170,7 +168,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					sourceD(row, col) = TestUtility.GetRandomDouble();
+					sourceD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -197,9 +195,9 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					originalNumbersF[row - 1][col - 1] = TestUtility.GetRandomFloat();
+					originalNumbersF[row - 1][col - 1] = TestUtility::GetRandomFloat();
 					resultF(row, col) = originalNumbersF[row - 1][col - 1];
-					addF(row, col) = TestUtility.GetRandomFloat();
+					addF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -222,9 +220,9 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					originalNumbersD[row - 1][col - 1] = TestUtility.GetRandomDouble();
+					originalNumbersD[row - 1][col - 1] = TestUtility::GetRandomDouble();
 					resultD(row, col) = originalNumbersD[row - 1][col - 1];
-					addD(row, col) = TestUtility.GetRandomDouble();
+					addD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -248,8 +246,8 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					leftF(row, col) = TestUtility.GetRandomFloat();
-					rightF(row, col) = TestUtility.GetRandomFloat();
+					leftF(row, col) = TestUtility::GetRandomFloat();
+					rightF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -270,8 +268,8 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					leftD(row, col) = TestUtility.GetRandomDouble();
-					rightD(row, col) = TestUtility.GetRandomDouble();
+					leftD(row, col) = TestUtility::GetRandomDouble();
+					rightD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -297,9 +295,9 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					originalNumbersF[row - 1][col - 1] = TestUtility.GetRandomFloat();
+					originalNumbersF[row - 1][col - 1] = TestUtility::GetRandomFloat();
 					resultF(row, col) = originalNumbersF[row - 1][col - 1];
-					subtractF(row, col) = TestUtility.GetRandomFloat();
+					subtractF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -322,9 +320,9 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					originalNumbersD[row - 1][col - 1] = TestUtility.GetRandomDouble();
+					originalNumbersD[row - 1][col - 1] = TestUtility::GetRandomDouble();
 					resultD(row, col) = originalNumbersD[row - 1][col - 1];
-					subtractD(row, col) = TestUtility.GetRandomDouble();
+					subtractD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -348,8 +346,8 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					leftF(row, col) = TestUtility.GetRandomFloat();
-					rightF(row, col) = TestUtility.GetRandomFloat();
+					leftF(row, col) = TestUtility::GetRandomFloat();
+					rightF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -370,8 +368,8 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					leftD(row, col) = TestUtility.GetRandomFloat();
-					rightD(row, col) = TestUtility.GetRandomFloat();
+					leftD(row, col) = TestUtility::GetRandomFloat();
+					rightD(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -397,9 +395,9 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					originalNumbersF[row - 1][col - 1] = TestUtility.GetRandomFloat();
+					originalNumbersF[row - 1][col - 1] = TestUtility::GetRandomFloat();
 					resultF(row, col) = originalNumbersF[row - 1][col - 1];
-					multiplyF(row, col) = TestUtility.GetRandomFloat();
+					multiplyF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -450,9 +448,9 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					originalNumbersD[row - 1][col - 1] = TestUtility.GetRandomDouble();
+					originalNumbersD[row - 1][col - 1] = TestUtility::GetRandomDouble();
 					resultD(row, col) = originalNumbersD[row - 1][col - 1];
-					multiplyD(row, col) = TestUtility.GetRandomDouble();
+					multiplyD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -504,8 +502,8 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					leftF(row, col) = TestUtility.GetRandomFloat();
-					rightF(row, col) = TestUtility.GetRandomFloat();
+					leftF(row, col) = TestUtility::GetRandomFloat();
+					rightF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -555,8 +553,8 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					leftD(row, col) = TestUtility.GetRandomDouble();
-					rightD(row, col) = TestUtility.GetRandomDouble();
+					leftD(row, col) = TestUtility::GetRandomDouble();
+					rightD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -604,13 +602,13 @@ namespace Assignment4Matrices
 		{
 			// Test the Matrix3x3<float> multiply operator function with Vector3<float>.
 			Matrix3x3f matrixF;
-			Vector3f vectorF(TestUtility.GetRandomFloat(), TestUtility.GetRandomFloat(), TestUtility.GetRandomFloat());
+			Vector3f vectorF(TestUtility::GetRandomFloat(), TestUtility::GetRandomFloat(), TestUtility::GetRandomFloat());
 
 			for (unsigned int col = 1; col <= ourColumnCount; ++col)
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					matrixF(row, col) = TestUtility.GetRandomFloat();
+					matrixF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -628,13 +626,13 @@ namespace Assignment4Matrices
 
 			// Test the Matrix3x3<double> multiply operator function with Vector3<float>.
 			Matrix3x3d matrixD;
-			Vector3d vectorD(TestUtility.GetRandomDouble(), TestUtility.GetRandomDouble(), TestUtility.GetRandomDouble());
+			Vector3d vectorD(TestUtility::GetRandomDouble(), TestUtility::GetRandomDouble(), TestUtility::GetRandomDouble());
 
 			for (unsigned int col = 1; col <= ourColumnCount; ++col)
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					matrixD(row, col) = TestUtility.GetRandomDouble();
+					matrixD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -660,7 +658,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					sourceF(row, col) = TestUtility.GetRandomFloat();
+					sourceF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -678,7 +676,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					sourceD(row, col) = TestUtility.GetRandomDouble();
+					sourceD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -699,7 +697,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					matrixF(row, col) = TestUtility.GetRandomFloat();
+					matrixF(row, col) = TestUtility::GetRandomFloat();
 				}
 			}
 
@@ -720,7 +718,7 @@ namespace Assignment4Matrices
 			{
 				for (unsigned int row = 1; row <= ourRowCount; ++row)
 				{
-					matrixD(row, col) = TestUtility.GetRandomDouble();
+					matrixD(row, col) = TestUtility::GetRandomDouble();
 				}
 			}
 
@@ -739,7 +737,7 @@ namespace Assignment4Matrices
 		{
 			// Test the static Matrix3x3<float> CreateRotationAroundX() function.
 			const float piF = std::acos(-1.0f);
-			const float angleF = TestUtility.GetRandomFloat(-piF * 2.0f, piF * 2.0f);
+			const float angleF = TestUtility::GetRandomFloat(-piF * 2.0f, piF * 2.0f);
 
 			Matrix3x3f resultF = Matrix3x3f::CreateRotationAroundX(angleF);
 
@@ -760,7 +758,7 @@ namespace Assignment4Matrices
 
 			// Test the static Matrix3x3<double> CreateRotationAroundX() function.
 			const double piD = std::acos(-1.0);
-			const double angleD = TestUtility.GetRandomDouble(-piD * 2.0f, piD * 2.0f);
+			const double angleD = TestUtility::GetRandomDouble(-piD * 2.0f, piD * 2.0f);
 
 			Matrix3x3d resultD = Matrix3x3d::CreateRotationAroundX(angleD);
 
@@ -784,7 +782,7 @@ namespace Assignment4Matrices
 		{
 			// Test the static Matrix3x3<float> CreateRotationAroundY() function.
 			const float piF = std::acos(-1.0f);
-			const float angleF = TestUtility.GetRandomFloat(-piF * 2.0f, piF * 2.0f);
+			const float angleF = TestUtility::GetRandomFloat(-piF * 2.0f, piF * 2.0f);
 
 			Matrix3x3f resultF = Matrix3x3f::CreateRotationAroundY(angleF);
 
@@ -805,7 +803,7 @@ namespace Assignment4Matrices
 
 			// Test the static Matrix3x3<double> CreateRotationAroundY() function.
 			const double piD = std::acos(-1.0);
-			const double angleD = TestUtility.GetRandomDouble(-piD * 2.0, piD * 2.0);
+			const double angleD = TestUtility::GetRandomDouble(-piD * 2.0, piD * 2.0);
 
 			Matrix3x3d resultD = Matrix3x3d::CreateRotationAroundY(angleD);
 
@@ -829,7 +827,7 @@ namespace Assignment4Matrices
 		{
 			// Test the static Matrix3x3<float> CreateRotationAroundZ() function.
 			const float piF = std::acos(-1.0f);
-			const float angleF = TestUtility.GetRandomFloat(-piF * 2.0f, piF * 2.0f);
+			const float angleF = TestUtility::GetRandomFloat(-piF * 2.0f, piF * 2.0f);
 
 			Matrix3x3f resultF = Matrix3x3f::CreateRotationAroundZ(angleF);
 
@@ -850,7 +848,7 @@ namespace Assignment4Matrices
 
 			// Test the static Matrix3x3<double> CreateRotationAroundZ() function.
 			const double piD = std::acos(-1.0);
-			const double angleD = TestUtility.GetRandomDouble(-piD * 2.0f, piD * 2.0f);
+			const double angleD = TestUtility::GetRandomDouble(-piD * 2.0f, piD * 2.0f);
 
 			Matrix3x3d resultD = Matrix3x3d::CreateRotationAroundZ(angleD);
 

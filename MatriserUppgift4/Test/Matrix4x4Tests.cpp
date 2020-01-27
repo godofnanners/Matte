@@ -876,6 +876,282 @@ namespace Assignment4Matrices
 			Assert::AreEqual(0.0, resultD(4, 3), L"The Matrix4x4<double>::CreateRotationAroundZ() function produced an incorrect result in element (4, 3).");
 			Assert::AreEqual(1.0, resultD(4, 4), L"The Matrix4x4<double>::CreateRotationAroundZ() function produced an incorrect result in element (4, 4).");
 		}
+		
+
+
+		TEST_METHOD(Get_Fast_Inverse_X_Rotation)
+		{
+			// Test the Matrix4x4<float> GetFastInverse() function on an x rotation matrix.
+			const float twoPiF = std::acos(-1.0f) * 2.0f;
+			float angleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+
+			Matrix4x4f rotationXInvF(Matrix4x4f::GetFastInverse(Matrix4x4f::CreateRotationAroundX(angleF)));
+			Matrix4x4f rotationXNegF(Matrix4x4f::CreateRotationAroundX(-angleF));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationXNegF(row, col), rotationXInvF(row, col), L"Matrix4x4<float>::GetFastInverse() of a rotation matrix (around x) should result in a rotation matrix of the negative angle.");
+				}
+			}
+
+			// Test the Matrix4x4<double> GetFastInverse() function on an x rotation matrix.
+			const double twoPiD = std::acos(-1.0) * 2.0;
+			double angleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+
+			Matrix4x4d rotationXInvD(Matrix4x4d::GetFastInverse(Matrix4x4d::CreateRotationAroundX(angleD)));
+			Matrix4x4d rotationXNegD(Matrix4x4d::CreateRotationAroundX(-angleD));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationXNegD(row, col), rotationXInvD(row, col), L"Matrix4x4<double>::GetFastInverse() of a rotation matrix (around x) should result in a rotation matrix of the negative angle.");
+				}
+			}
+		}
+
+		TEST_METHOD(Get_Fast_Inverse_Y_Rotation)
+		{
+			// Test the Matrix4x4<float> GetFastInverse() function on an y rotation matrix.
+			const float twoPiF = std::acos(-1.0f) * 2.0f;
+			float angleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+
+			Matrix4x4f rotationYInvF(Matrix4x4f::GetFastInverse(Matrix4x4f::CreateRotationAroundY(angleF)));
+			Matrix4x4f rotationYNegF(Matrix4x4f::CreateRotationAroundY(-angleF));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationYNegF(row, col), rotationYInvF(row, col), L"Matrix4x4<float>::GetFastInverse() of a rotation matrix (around y) should result in a rotation matrix of the negative angle.");
+				}
+			}
+
+			// Test the Matrix4x4<double> GetFastInverse() function on an y rotation matrix.
+			const double twoPiD = std::acos(-1.0) * 2.0;
+			double angleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+
+			Matrix4x4d rotationYInvD(Matrix4x4d::GetFastInverse(Matrix4x4d::CreateRotationAroundY(angleD)));
+			Matrix4x4d rotationYNegD(Matrix4x4d::CreateRotationAroundY(-angleD));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationYNegD(row, col), rotationYInvD(row, col), L"Matrix4x4<double>::GetFastInverse() of a rotation matrix (around y) should result in a rotation matrix of the negative angle.");
+				}
+			}
+		}
+
+		TEST_METHOD(Get_Fast_Inverse_Z_Rotation)
+		{
+			// Test the Matrix4x4<float> GetFastInverse() function on an z rotation matrix.
+			const float twoPiF = std::acos(-1.0f) * 2.0f;
+			float angleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+
+			Matrix4x4f rotationZInvF(Matrix4x4f::GetFastInverse(Matrix4x4f::CreateRotationAroundZ(angleF)));
+			Matrix4x4f rotationZNegF(Matrix4x4f::CreateRotationAroundZ(-angleF));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationZNegF(row, col), rotationZInvF(row, col), L"Matrix4x4<float>::GetFastInverse() of a rotation matrix (around z) should result in a rotation matrix of the negative angle.");
+				}
+			}
+
+			// Test the Matrix4x4<double> GetFastInverse() function on an z rotation matrix.
+			const double twoPiD = std::acos(-1.0) * 2.0;
+			double angleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+
+			Matrix4x4d rotationZInvD(Matrix4x4d::GetFastInverse(Matrix4x4d::CreateRotationAroundZ(angleD)));
+			Matrix4x4d rotationZNegD(Matrix4x4d::CreateRotationAroundZ(-angleD));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationZNegD(row, col), rotationZInvD(row, col), L"Matrix4x4<double>::GetFastInverse() of a rotation matrix (around z) should result in a rotation matrix of the negative angle.");
+				}
+			}
+		}
+
+		TEST_METHOD(Get_Fast_Inverse_XYZ_Rotation)
+		{
+			// Test the Matrix4x4<float> GetFastInverse() function on an x rotation matrix.
+			const float twoPiF = std::acos(-1.0f) * 2.0f;
+			float xAngleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+			float yAngleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+			float zAngleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+
+			Matrix4x4f rotationXYZf(Matrix4x4f::CreateRotationAroundX(xAngleF) * Matrix4x4f::CreateRotationAroundY(yAngleF) * Matrix4x4f::CreateRotationAroundZ(zAngleF));
+
+			Matrix4x4f rotationInvF(Matrix4x4f::GetFastInverse(rotationXYZf));
+			Matrix4x4f rotationNegF(Matrix4x4f::CreateRotationAroundZ(-zAngleF) * (Matrix4x4f::CreateRotationAroundY(-yAngleF) * Matrix4x4f::CreateRotationAroundX(-xAngleF)));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationNegF(row, col), rotationInvF(row, col), L"Matrix4x4<float>::GetFastInverse() of the matrices\n" \
+						"CreateRotationAroundX(xAngle) * CreateRotationAroundY(yAngle) * CreateRotationAroundZ(zAngle) should equal\n" \
+						"CreateRotationAroundZ(-zAngle) * (CreateRotationAroundY(-yAngle) * CreateRotationAroundX(-xAngle))");
+				}
+			}
+
+			// Test the Matrix4x4<double> GetFastInverse() function on an x rotation matrix.
+			const double twoPiD = std::acos(-1.0) * 2.0;
+			double xAngleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+			double yAngleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+			double zAngleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+
+			Matrix4x4d rotationXYZd(Matrix4x4d::CreateRotationAroundX(xAngleD) * Matrix4x4d::CreateRotationAroundY(yAngleD) * Matrix4x4d::CreateRotationAroundZ(zAngleD));
+
+			Matrix4x4d rotationInvD(Matrix4x4d::GetFastInverse(rotationXYZd));
+			Matrix4x4d rotationNegD(Matrix4x4d::CreateRotationAroundZ(-zAngleD) * (Matrix4x4d::CreateRotationAroundY(-yAngleD) * Matrix4x4d::CreateRotationAroundX(-xAngleD)));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(rotationNegD(row, col), rotationInvD(row, col), L"Matrix4x4<double>::GetFastInverse() of the matrices\n" \
+						"CreateRotationAroundX(xAngle) * CreateRotationAroundY(yAngle) * CreateRotationAroundZ(zAngle) should equal\n" \
+						"CreateRotationAroundZ(-zAngle) * (CreateRotationAroundY(-yAngle) * CreateRotationAroundX(-xAngle))");
+				}
+			}
+		}
+
+		TEST_METHOD(Get_Fast_Inverse_Translation)
+		{
+			// Test the Matrix4x4<float> GetFastInverse() function on a translation matrix.
+			float xTranslationF = TestUtility::GetRandomFloat(-1000.0f, 1000.0f);
+			float yTranslationF = TestUtility::GetRandomFloat(-1000.0f, 1000.0f);
+			float zTranslationF = TestUtility::GetRandomFloat(-1000.0f, 1000.0f);
+
+			Matrix4x4f translationF;
+			translationF(4, 1) = xTranslationF;
+			translationF(4, 2) = yTranslationF;
+			translationF(4, 3) = zTranslationF;
+
+			Matrix4x4f translationInvF(Matrix4x4f::GetFastInverse(translationF));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount - 1; ++row)
+				{
+					Assert::AreEqual((col == row ? 1.0f : 0.0f), translationInvF(row, col), L"A translation matrix upper left 3x3 part is the identity matrix - Matrix4x4<float>::GetFastInverse() shouldn't change that.");
+				}
+			}
+
+			Assert::AreEqual(-xTranslationF, translationInvF(4, 1), L"Matrix4x4<float>::GetFastInverse() of a translation should result in a translation matrix of the negative position, but the x value is wrong.");
+			Assert::AreEqual(-yTranslationF, translationInvF(4, 2), L"Matrix4x4<float>::GetFastInverse() of a translation should result in a translation matrix of the negative position, but the y value is wrong.");
+			Assert::AreEqual(-zTranslationF, translationInvF(4, 3), L"Matrix4x4<float>::GetFastInverse() of a translation should result in a translation matrix of the negative position, but the z value is wrong.");
+
+			// Test the Matrix4x4<double> GetFastInverse() function on a translation matrix.
+			double xTranslationD = TestUtility::GetRandomDouble(-1000.0, 1000.0);
+			double yTranslationD = TestUtility::GetRandomDouble(-1000.0, 1000.0);
+			double zTranslationD = TestUtility::GetRandomDouble(-1000.0, 1000.0);
+
+			Matrix4x4d translationD;
+			translationD(4, 1) = xTranslationD;
+			translationD(4, 2) = yTranslationD;
+			translationD(4, 3) = zTranslationD;
+
+			Matrix4x4d translationInvD(Matrix4x4d::GetFastInverse(translationD));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount - 1; ++row)
+				{
+					Assert::AreEqual((col == row ? 1.0 : 0.0), translationInvD(row, col), L"A translation matrix upper left 3x3 part is the identity matrix - Matrix4x4<double>::GetFastInverse() shouldn't change that.");
+				}
+			}
+
+			Assert::AreEqual(-xTranslationD, translationInvD(4, 1), L"Matrix4x4<double>::GetFastInverse() of a translation should result in a translation matrix of the negative position, but the x value is wrong.");
+			Assert::AreEqual(-yTranslationD, translationInvD(4, 2), L"Matrix4x4<double>::GetFastInverse() of a translation should result in a translation matrix of the negative position, but the y value is wrong.");
+			Assert::AreEqual(-zTranslationD, translationInvD(4, 3), L"Matrix4x4<double>::GetFastInverse() of a translation should result in a translation matrix of the negative position, but the z value is wrong.");
+		}
+
+		TEST_METHOD(Get_Fast_Inverse_XYZ_Rotation_Translation)
+		{
+			// Test the Matrix4x4<float> GetFastInverse() function on an xyz rotation and translation matrix.
+			const float twoPiF = std::acos(-1.0f) * 2.0f;
+			float xAngleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+			float yAngleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+			float zAngleF = TestUtility::GetRandomFloat(-twoPiF, twoPiF);
+
+			float xTranslationF = TestUtility::GetRandomFloat(-1000.0f, 1000.0f);
+			float yTranslationF = TestUtility::GetRandomFloat(-1000.0f, 1000.0f);
+			float zTranslationF = TestUtility::GetRandomFloat(-1000.0f, 1000.0f);
+
+			Matrix4x4f translationF;
+			translationF(4, 1) = xTranslationF;
+			translationF(4, 2) = yTranslationF;
+			translationF(4, 3) = zTranslationF;
+
+			Matrix4x4f rotationXYZf(Matrix4x4f::CreateRotationAroundX(xAngleF) * Matrix4x4f::CreateRotationAroundY(yAngleF) * Matrix4x4f::CreateRotationAroundZ(zAngleF));
+			Matrix4x4f transformationInvF(Matrix4x4f::GetFastInverse(rotationXYZf * translationF));
+
+			Matrix4x4f translationNegF;
+			translationNegF(4, 1) = -xTranslationF;
+			translationNegF(4, 2) = -yTranslationF;
+			translationNegF(4, 3) = -zTranslationF;
+
+			Matrix4x4f transformationNegF(translationNegF *
+				(Matrix4x4f::CreateRotationAroundZ(-zAngleF) *
+				(Matrix4x4f::CreateRotationAroundY(-yAngleF) * Matrix4x4f::CreateRotationAroundX(-xAngleF))));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(transformationNegF(row, col), transformationInvF(row, col), L"Matrix4x4<float>::GetFastInverse() of the matrices\n" \
+						"CreateRotationAroundX(xAngle) * CreateRotationAroundY(yAngle) * CreateRotationAroundZ(zAngle) * Translation(position) should equal\n" \
+						"Translation(-position) * CreateRotationAroundZ(-zAngle) * (CreateRotationAroundY(-yAngle) * CreateRotationAroundX(-xAngle))");
+				}
+			}
+
+
+
+			// Test the Matrix4x4<double> GetFastInverse() function on an xyz rotation and translation matrix.
+			const double twoPiD = std::acos(-1.0) * 2.0;
+			double xAngleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+			double yAngleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+			double zAngleD = TestUtility::GetRandomDouble(-twoPiD, twoPiD);
+
+			double xTranslationD = TestUtility::GetRandomDouble(-1000.0, 1000.0);
+			double yTranslationD = TestUtility::GetRandomDouble(-1000.0, 1000.0);
+			double zTranslationD = TestUtility::GetRandomDouble(-1000.0, 1000.0);
+
+			Matrix4x4d translationD;
+			translationD(4, 1) = xTranslationD;
+			translationD(4, 2) = yTranslationD;
+			translationD(4, 3) = zTranslationD;
+
+			Matrix4x4d rotationXYZd(Matrix4x4d::CreateRotationAroundX(xAngleD) * Matrix4x4d::CreateRotationAroundY(yAngleD) * Matrix4x4d::CreateRotationAroundZ(zAngleD));
+			Matrix4x4d transformationInvD(Matrix4x4d::GetFastInverse(rotationXYZd * translationD));
+
+			Matrix4x4d translationNegD;
+			translationNegD(4, 1) = -xTranslationD;
+			translationNegD(4, 2) = -yTranslationD;
+			translationNegD(4, 3) = -zTranslationD;
+
+			Matrix4x4d transformationNegD(translationNegD *
+				(Matrix4x4d::CreateRotationAroundZ(-zAngleD) *
+				(Matrix4x4d::CreateRotationAroundY(-yAngleD) * Matrix4x4d::CreateRotationAroundX(-xAngleD))));
+
+			for (unsigned int col = 1; col <= ourColumnCount; ++col)
+			{
+				for (unsigned int row = 1; row <= ourRowCount; ++row)
+				{
+					Assert::AreEqual(transformationNegD(row, col), transformationInvD(row, col), L"Matrix4x4<float>::GetFastInverse() of the matrices\n" \
+						"CreateRotationAroundX(xAngle) * CreateRotationAroundY(yAngle) * CreateRotationAroundZ(zAngle) * Translation(position) should equal\n" \
+						"Translation(-position) * CreateRotationAroundZ(-zAngle) * (CreateRotationAroundY(-yAngle) * CreateRotationAroundX(-xAngle))");
+				}
+			}
+		}
 
 	private:
 		static const unsigned int ourRowCount = 4;

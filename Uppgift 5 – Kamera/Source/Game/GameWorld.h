@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Camera.h"
 namespace Tga2D
 {
 	class CSprite;

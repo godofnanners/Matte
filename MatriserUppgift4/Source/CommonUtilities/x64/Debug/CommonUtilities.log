@@ -1,2 +1,28 @@
-﻿  Random.cpp
+﻿  InputHandler.cpp
+  KeyBoardInputs.cpp
+  MouseInput.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\KeyBoardInputs.cpp(5,24): warning C4244:  'argument': conversion from 'WPARAM' to 'int', possible loss of data
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(62,25): warning C4244:  '=': conversion from 'LONG' to '_Ty', possible loss of data
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(62,25): warning C4244:         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(62,25): warning C4244:         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(62,25): warning C4244:             _Ty=float
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(62,25): warning C4244:         ]
+  Random.cpp
+  Timer.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(63,25): warning C4244:  '=': conversion from 'LONG' to '_Ty', possible loss of data
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(63,25): warning C4244:         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(63,25): warning C4244:         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(63,25): warning C4244:             _Ty=float
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\InputHandler\MouseInput.cpp(63,25): warning C4244:         ]
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(24,19): warning C4244:  'initializing': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(24,19): warning C4244:         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(24,19): warning C4244:         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(24,19): warning C4244:             _Rep=__int64
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(24,19): warning C4244:         ]
+  Generating Code...
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(37,20): warning C4244:  'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(37,20): warning C4244:         with
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(37,20): warning C4244:         [
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(37,20): warning C4244:             _Rep=__int64
+C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Source\CommonUtilities\Timer\Timer.cpp(37,20): warning C4244:         ]
   CommonUtilities.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\MatriserUppgift4\Test\x64\Debug\CommonUtilities.lib

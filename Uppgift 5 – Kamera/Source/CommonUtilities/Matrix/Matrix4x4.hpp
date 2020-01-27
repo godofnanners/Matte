@@ -4,8 +4,8 @@
 #include <math.h>
 namespace CommonUtilities
 {
-	#define MATRIX_FOUR_TWODIM_SIZE 4
-	#define MATRIX_FOUR_ONEDIM_SIZE 16
+#define MATRIX_FOUR_TWODIM_SIZE 4
+#define MATRIX_FOUR_ONEDIM_SIZE 16
 
 	template<class T>
 	class Matrix4x4
@@ -23,6 +23,7 @@ namespace CommonUtilities
 		Matrix4x4<T> operator-(Matrix4x4<T>& aMatrix);
 		void operator-=(Matrix4x4<T>& aMatrix);
 		Matrix4x4<T> operator*(Matrix4x4<T>& aMatrix);
+		Matrix4x4<T> operator*(const Matrix4x4<T>& aMatrix)const;
 		void operator*=(Matrix4x4<T>& aMatrix);
 		Vector4<T> operator*(Vector4<T>& aVector4);
 		void operator=(Matrix4x4<T>& aMatrix);
@@ -35,7 +36,7 @@ namespace CommonUtilities
 		static Matrix4x4<T> Transpose(const Matrix4x4<T>& aMatrixToTranspose);
 		// Assumes aTransform is made up of nothing but rotations and translations.
 		static Matrix4x4<T> GetFastInverse(const Matrix4x4<T>& aTransform);
-		
+
 	private:
 
 		union
@@ -59,7 +60,7 @@ namespace CommonUtilities
 			}
 		}
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T>::Matrix4x4(const Matrix4x4<T>& aMatrix)
 	{
@@ -68,21 +69,21 @@ namespace CommonUtilities
 			myMatrix.oneDim[i] = aMatrix.myMatrix.oneDim[i];
 		}
 	}
-	
+
 	template<class T>
 	inline T& Matrix4x4<T>::operator()(const int aRow, const int aColumn)
 	{
 		// TODO: insert return statement here
 		return myMatrix.twoDim[aRow - 1][aColumn - 1];
 	}
-	
+
 	template<class T>
 	inline const T& Matrix4x4<T>::operator()(const int aRow, const int aColumn) const
 	{
 		// TODO: insert return statement here
 		return myMatrix.twoDim[aRow - 1][aColumn - 1];
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator+(Matrix4x4<T>& aMatrix)
 	{
@@ -93,7 +94,7 @@ namespace CommonUtilities
 		}
 		return addMatrix;
 	}
-	
+
 	template<class T>
 	inline void Matrix4x4<T>::operator+=(Matrix4x4<T>& aMatrix)
 	{
@@ -102,7 +103,7 @@ namespace CommonUtilities
 			myMatrix.oneDim[i] += aMatrix.myMatrix.oneDim[i];
 		}
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator-(Matrix4x4<T>& aMatrix)
 	{
@@ -113,7 +114,7 @@ namespace CommonUtilities
 		}
 		return subMatrix;
 	}
-	
+
 	template<class T>
 	inline void Matrix4x4<T>::operator-=(Matrix4x4<T>& aMatrix)
 	{
@@ -122,7 +123,7 @@ namespace CommonUtilities
 			myMatrix.oneDim[i] -= aMatrix.myMatrix.oneDim[i];
 		}
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::operator*(Matrix4x4<T>& aMatrix)
 	{
@@ -144,7 +145,29 @@ namespace CommonUtilities
 		}
 		return multMatrix;
 	}
-	
+
+	template<class T>
+	inline Matrix4x4<T> Matrix4x4<T>::operator*(const Matrix4x4<T>& aMatrix) const
+	{
+		Matrix4x4<T>multMatrix;
+		int multMatIndex = 0;
+		T sum = 0;
+		for (int lMatRow = 0; lMatRow < MATRIX_FOUR_TWODIM_SIZE; lMatRow++)
+		{
+			for (int rMatCol = 0; rMatCol < MATRIX_FOUR_TWODIM_SIZE; rMatCol++)
+			{
+				sum = 0;
+				for (int lMatColrMatRow = 0; lMatColrMatRow < MATRIX_FOUR_TWODIM_SIZE; lMatColrMatRow++)
+				{
+					sum += myMatrix.twoDim[lMatRow][lMatColrMatRow] * aMatrix.myMatrix.twoDim[lMatColrMatRow][rMatCol];
+				}
+				multMatrix.myMatrix.oneDim[multMatIndex] = sum;
+				++multMatIndex;
+			}
+		}
+		return multMatrix;
+	}
+
 	template<class T>
 	inline void Matrix4x4<T>::operator*=(Matrix4x4<T>& aMatrix)
 	{
@@ -166,7 +189,7 @@ namespace CommonUtilities
 		}
 		*this = multMatrix;
 	}
-	
+
 	template<class T>
 	inline Vector4<T> Matrix4x4<T>::operator*(Vector4<T>& aVector4)
 	{
@@ -217,7 +240,7 @@ namespace CommonUtilities
 			myMatrix.oneDim[i] = aMatrix.myMatrix.oneDim[i];
 		}
 	}
-	
+
 	template<class T>
 	inline bool Matrix4x4<T>::operator==(const Matrix4x4<T>& aMatrixlhs) const
 	{
@@ -243,7 +266,7 @@ namespace CommonUtilities
 
 		return xRot;
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::CreateRotationAroundY(T aAngleInRadians)
 	{
@@ -256,7 +279,7 @@ namespace CommonUtilities
 
 		return yRot;
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::CreateRotationAroundZ(T aAngleInRadians)
 	{
@@ -269,7 +292,7 @@ namespace CommonUtilities
 
 		return zRot;
 	}
-	
+
 	template<class T>
 	inline Matrix4x4<T> Matrix4x4<T>::Transpose(const Matrix4x4<T>& aMatrixToTranspose)
 	{
@@ -291,7 +314,7 @@ namespace CommonUtilities
 		InversTranslationMatrix.myMatrix.oneDim[12] = -aTransform.myMatrix.oneDim[12];
 		InversTranslationMatrix.myMatrix.oneDim[13] = -aTransform.myMatrix.oneDim[13];
 		InversTranslationMatrix.myMatrix.oneDim[14] = -aTransform.myMatrix.oneDim[14];
-		
+
 		Matrix4x4<T> RotationMatrix;
 		RotationMatrix.myMatrix.oneDim[0] = aTransform.myMatrix.oneDim[0];
 		RotationMatrix.myMatrix.oneDim[1] = aTransform.myMatrix.oneDim[1];
@@ -303,7 +326,7 @@ namespace CommonUtilities
 		RotationMatrix.myMatrix.oneDim[9] = aTransform.myMatrix.oneDim[9];
 		RotationMatrix.myMatrix.oneDim[10] = aTransform.myMatrix.oneDim[10];
 		Matrix4x4<T> InversRotationMatrix = Transpose(RotationMatrix);
-		
+
 		return InversTranslationMatrix * InversRotationMatrix;
 	}
 }

@@ -11,7 +11,7 @@ public:
 
 	CommonUtilities::Vector4<float>ToPostProjection(const CommonUtilities::Vector4<float>& aWorldPosition)const;
 	void MoveCamera(const CommonUtilities::Vector3<float>& aMovement);
-	void RotateFamera(const CommonUtilities::Matrix4x4<float>aRotation);
+	void RotateCamera(const CommonUtilities::Matrix4x4<float>aRotation);
 
 	float GetNearPlane() const;
 	float GetFarPlane() const;

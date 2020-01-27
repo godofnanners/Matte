@@ -18,32 +18,33 @@ void Camera::Init()
 	myProjectionMatrix(1, 4) = 0;
 
 	myProjectionMatrix(2, 1) = 0;
-	myProjectionMatrix(2, 2)=(screenWidth/screenHeight/std::tanf(foV/2));
+	myProjectionMatrix(2, 2) = (screenWidth / screenHeight / std::tanf(foV / 2));
 	myProjectionMatrix(2, 3) = 0;
 	myProjectionMatrix(2, 4) = 0;
 
 	myProjectionMatrix(3, 1) = 0;
 	myProjectionMatrix(3, 2) = 0;
-	myProjectionMatrix(3, 3)=myFarPlane/(myFarPlane-myNearPlane);
+	myProjectionMatrix(3, 3) = myFarPlane / (myFarPlane - myNearPlane);
 	myProjectionMatrix(3, 4) = 1;
 
 	myProjectionMatrix(4, 1) = 0;
 	myProjectionMatrix(4, 2) = 0;
-	myProjectionMatrix(4, 3) = (-1 *myNearPlane*myFarPlane)/(myFarPlane-myNearPlane);
+	myProjectionMatrix(4, 3) = (-1 * myNearPlane * myFarPlane) / (myFarPlane - myNearPlane);
 	myProjectionMatrix(4, 4) = 0;
 }
 
 CommonUtilities::Vector4<float> Camera::ToPostProjection(const CommonUtilities::Vector4<float>& aWorldPosition) const
 {
-	return CommonUtilities::Vector4<float>();
+	return aWorldPosition * CommonUtilities::Matrix4x4<float>::GetFastInverse(myTransform) * myProjectionMatrix;
 }
 
 void Camera::MoveCamera(const CommonUtilities::Vector3<float>& aMovement)
 {
 }
 
-void Camera::RotateFamera(const CommonUtilities::Matrix4x4<float> aRotation)
+void Camera::RotateCamera(const CommonUtilities::Matrix4x4<float> aRotation)
 {
+	myTransform = aRotation * myTransform;
 }
 
 float Camera::GetNearPlane() const

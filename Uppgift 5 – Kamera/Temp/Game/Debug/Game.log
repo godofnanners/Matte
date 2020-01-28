@@ -1,5 +1,2 @@
-﻿  Camera.cpp
-C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 5 – Kamera\Source\Game\Camera.cpp(4,97): warning C4100:  'aWorldPosition': unreferenced formal parameter
-C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 5 – Kamera\Source\Game\Camera.cpp(9,64): warning C4100:  'aMovement': unreferenced formal parameter
-C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 5 – Kamera\Source\Game\Camera.cpp(13,67): warning C4100:  'aRotation': unreferenced formal parameter
+﻿  GameWorld.cpp
   Game.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 5 – Kamera\Source\..\Lib\Game_Debug.lib

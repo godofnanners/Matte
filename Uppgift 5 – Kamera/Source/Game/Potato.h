@@ -1,6 +1,12 @@
 #pragma once
 #include "Vector/Vector4.hpp"
 #include "Camera.h"
+namespace Tga2D
+{
+	class CSprite;
+	class FBXModel;
+	class CAudio;
+}
 class Potato
 {
 public:
@@ -8,7 +14,7 @@ public:
 	~Potato();
 
 	void Render(const float aNear, const float aFar)const;
-	void UpdatePotato(const Camera& aCamera);
+	void UpdatePotato(const Camera* aCamera);
 
 	static bool ComparePotatoes(const Potato* aPotato, const Potato* aSecondPotato);
 private:

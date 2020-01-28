@@ -6,7 +6,7 @@
 class Camera
 {
 public:
-	Camera();
+	Camera()=default;
 	void Init();
 
 	CommonUtilities::Vector4<float>ToPostProjection(const CommonUtilities::Vector4<float>& aWorldPosition)const;

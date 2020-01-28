@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <tga2d/Engine.h>
 #include "Game.h"
-
+#include "InputHandler/InputHandler.h"
 #include <tga2d/error/error_manager.h>
 
 using namespace std::placeholders;
@@ -18,7 +18,7 @@ std::wstring BUILD_NAME = L"Release";
 #pragma comment(lib,"TGA2D_Retail.lib")
 std::wstring BUILD_NAME = L"Retail";
 #endif // DEBUG
-
+CommonUtilities::InputHandler myInputHandler;
 CGame::CGame()
 {
 }
@@ -33,6 +33,9 @@ LRESULT CGame::WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	lParam;
 	wParam;
 	hWnd;
+
+	if (myInputHandler.UpdateEvents(message, wParam, lParam))
+		return 0;
 	switch (message)
 	{
 		// this message is read when the window is closed
@@ -82,7 +85,7 @@ void CGame::InitCallBack()
 
 void CGame::UpdateCallBack()
 {
-	myGameWorld.Update(Tga2D::CEngine::GetInstance()->GetDeltaTime());
+	myGameWorld.Update(Tga2D::CEngine::GetInstance()->GetDeltaTime(),myInputHandler);
 	myGameWorld.Render();
 
 }

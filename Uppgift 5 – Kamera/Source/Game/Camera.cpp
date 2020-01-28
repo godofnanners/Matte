@@ -10,7 +10,7 @@ void Camera::Init()
 	float screenWidth = static_cast<float>(Tga2D::CEngine::GetInstance()->GetRenderSize().x);
 	float screenHeight = static_cast<float>(Tga2D::CEngine::GetInstance()->GetRenderSize().y);
 
-	float foV = M_PI * 0.5f;
+	float foV = 3.14f * 0.5f;
 
 	myProjectionMatrix(1, 1) = (1 / std::tanf(foV / 2));
 	myProjectionMatrix(1, 2) = 0;
@@ -40,6 +40,7 @@ CommonUtilities::Vector4<float> Camera::ToPostProjection(const CommonUtilities::
 
 void Camera::MoveCamera(const CommonUtilities::Vector3<float>& aMovement)
 {
+	myTransform.AddToTranslation(aMovement);
 }
 
 void Camera::RotateCamera(const CommonUtilities::Matrix4x4<float> aRotation)
@@ -49,17 +50,17 @@ void Camera::RotateCamera(const CommonUtilities::Matrix4x4<float> aRotation)
 
 float Camera::GetNearPlane() const
 {
-	return 0.0f;
+	return myNearPlane;
 }
 
 float Camera::GetFarPlane() const
 {
-	return 0.0f;
+	return myFarPlane;
 }
 
 float Camera::GetSpeed() const
 {
-	return 0.0f;
+	return mySpeed;
 }
 
 const CommonUtilities::Matrix4x4<float>& Camera::GetTransform() const

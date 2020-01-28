@@ -1,23 +1,42 @@
 #include "stdafx.h"
 #include "Potato.h"
-
-Potato::Potato(const CommonUtilities::Vector4<float>& aPosition)
+#include "tga2d/sprite/sprite.h"
+#include "Macro.h"
+Potato::Potato(const CommonUtilities::Vector4<float>& aPosition) :
+	mySprite(new Tga2D::CSprite("sprites/star.dds"))
 {
+	myPosition = aPosition;
+	myZDistance = 0;
+	mySprite->SetPivot({ 0.5f,0.5f });
 }
 
 Potato::~Potato()
 {
+	SAFE_DELETE(mySprite);
 }
 
 void Potato::Render(const float aNear, const float aFar) const
 {
+	if (myZDistance > aNear && myZDistance < aFar)
+	{
+		mySprite->Render();
+	}
 }
 
-void Potato::UpdatePotato(const Camera& aCamera)
+void Potato::UpdatePotato(const Camera * aCamera)
 {
+	CommonUtilities::Vector4<float> vector(aCamera->ToPostProjection(myPosition));
+	myZDistance = vector.z;
+	float inversW = 1 / vector.w;
+	vector.x *= inversW;
+	vector.y *= inversW;
+	vector.z *= inversW;
+	vector.w *= inversW;
+	mySprite->SetSizeRelativeToImage({ 10.f / myZDistance,10.f / myZDistance });
+	mySprite->SetPosition({ vector.x / 2.f + 0.5f,-1 * vector.y / 2.f + 0.5f });
 }
 
 bool Potato::ComparePotatoes(const Potato* aPotato, const Potato* aSecondPotato)
 {
-	return false;
+	return aPotato->myZDistance > aSecondPotato->myZDistance;
 }

@@ -1,0 +1,28 @@
+﻿  InputHandler.cpp
+  KeyBoardInputs.cpp
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\InputHandler\KeyBoardInputs.cpp(5,24): warning C4244: 'argument': conversion from 'WPARAM' to 'int', possible loss of data
+  MouseInput.cpp
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\InputHandler\MouseInput.cpp(62,25): warning C4244: '=': conversion from 'LONG' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\InputHandler\MouseInput.cpp(63,25): warning C4244: '=': conversion from 'LONG' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+  Random.cpp
+  Timer.cpp
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\Timer\Timer.cpp(24,19): warning C4244: 'initializing': conversion from '_Rep' to 'float', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\Timer\Timer.cpp(37,20): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+  Generating Code...
+  CommonUtilities.vcxproj -> C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\x64\Debug\CommonUtilities.lib

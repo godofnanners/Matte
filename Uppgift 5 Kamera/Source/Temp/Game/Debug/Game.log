@@ -1,0 +1,13 @@
+﻿  stdafx.cpp
+  Camera.cpp
+  Game.cpp
+  GameWorld.cpp
+  Potato.cpp
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\Game\Camera.cpp(1): warning C4603: '_USE_MATH_DEFINES': macro is not defined or definition is different after precompiled header use
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\Game\Camera.cpp(1): message : Add macro to precompiled header instead of defining here
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\Game\Camera.cpp(2): message : use of precompiled header
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\Game\Camera.cpp(48,39): warning C4239: nonstandard extension used: 'argument': conversion from 'CommonUtilities::Matrix4x4<float>' to 'CommonUtilities::Matrix4x4<float> &'
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\Game\Camera.cpp(48,39): message : A non-const reference may only be bound to an lvalue; assignment operator takes a reference to non-const
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\Vector\Vector4.hpp(108): warning C4715: 'CommonUtilities::Vector4<float>::operator[]': not all control paths return a value
+C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\CommonUtilities\Vector\Vector4.hpp(85): warning C4715: 'CommonUtilities::Vector4<float>::operator[]': not all control paths return a value
+  Game.vcxproj -> C:\Users\caspe\Documents\GitHub\Matte\Uppgift 5 Kamera\Source\Source\..\Lib\Game_Debug.lib

@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  Camera.cpp
+  Game.cpp
+  GameWorld.cpp
+  Potato.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 6 Modellinladdning\Source\Game\Camera.cpp(48,39): warning C4239:  nonstandard extension used: 'argument': conversion from 'CommonUtilities::Matrix4x4<float>' to 'CommonUtilities::Matrix4x4<float> &'
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 6 Modellinladdning\Source\Game\Camera.cpp(48,39): message :  A non-const reference may only be bound to an lvalue; assignment operator takes a reference to non-const
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 6 Modellinladdning\Source\Game\GameWorld.cpp(101,6): warning C4189:  'objectIndex': local variable is initialized but not referenced
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 6 Modellinladdning\Source\Game\GameWorld.cpp(121,53): warning C4267:  'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Game.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 6 Modellinladdning\Source\..\Lib\Game_Release.lib

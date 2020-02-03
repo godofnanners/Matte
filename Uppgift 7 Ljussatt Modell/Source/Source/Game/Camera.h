@@ -17,12 +17,16 @@ public:
 	float GetFarPlane() const;
 	float GetSpeed() const;
 
+	float GetRotationSpeed() const;
+
 	const CommonUtilities::Matrix4x4<float>& GetTransform() const;
+	const CommonUtilities::Vector3<float> GetPosition()const;
 private:
 	CommonUtilities::Matrix4x4<float> myTransform;
 	CommonUtilities::Matrix4x4<float> myProjectionMatrix;
 	float myNearPlane;
 	float myFarPlane;
 	float mySpeed;
+	float myRotationSpeed;
 };
 

@@ -38,6 +38,7 @@ namespace CommonUtilities
 		//Returns the dot product of this and aVector
 		T Dot(const Vector4<T>& aVector) const;
 
+		static Vector4<T> CompMult(const Vector4<T>& aVector, const Vector4<T>& aVector2);
 	};
 
 
@@ -64,7 +65,7 @@ namespace CommonUtilities
 	inline T& Vector4<T>::operator[](const int& aIndex)
 	{
 		assert(aIndex < arrayFormatSize && L"Number is bigger than array");
-		assert(aIndex >= 0  && L"Number is below zero (minimum of array)");
+		assert(aIndex >= 0 && L"Number is below zero (minimum of array)");
 		if (aIndex == 0)
 		{
 			return x;
@@ -81,7 +82,7 @@ namespace CommonUtilities
 		{
 			return w;
 		}
-		
+
 	}
 
 	template<class T>
@@ -191,6 +192,19 @@ namespace CommonUtilities
 		T dot = (this->x * aVector.x) + (this->y * aVector.y) + (this->z * aVector.z) + (this->w * aVector.w);
 
 		return dot;
+	}
+
+	template<class T>
+	inline Vector4<T> Vector4<T>::CompMult(const Vector4<T>& aVector, const Vector4<T>& aVector2)
+	{
+		Vector4<T> CompMultVector;
+
+		CompMultVector.x = aVector.x * aVector2.x;
+		CompMultVector.y = aVector.y * aVector2.y;
+		CompMultVector.z = aVector.z * aVector2.z;
+		CompMultVector.w = aVector.w * aVector2.w;
+
+		return CompMultVector;
 	}
 
 	//Returns the vector sum of aVector0 and aVector1

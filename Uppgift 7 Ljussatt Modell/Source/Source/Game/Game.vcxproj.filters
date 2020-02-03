@@ -19,6 +19,7 @@
     </ClInclude>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Potato.h" />
+    <ClInclude Include="Lighting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -28,5 +29,6 @@
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Potato.cpp" />
+    <ClCompile Include="Lighting.cpp" />
   </ItemGroup>
 </Project>

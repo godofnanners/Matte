@@ -42,4 +42,6 @@ private:
 	std::vector<Potato*> myPotatoes;
 	std::vector<ObjectData> myObjectData;
 	Camera* myCamera;
+	bool mySpecBool;
+	bool myDiffBool;
 };

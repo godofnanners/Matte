@@ -36,9 +36,10 @@ namespace CommonUtilities
 		static Matrix4x4<T> Transpose(const Matrix4x4<T>& aMatrixToTranspose);
 		// Assumes aTransform is made up of nothing but rotations and translations.
 		static Matrix4x4<T> GetFastInverse(const Matrix4x4<T>& aTransform);
-		Vector3<T> GetForward();
+		Vector3<T> GetForward()const;
 		Vector3<T> GetRight();
 		Vector3<T> GetUp();
+		Vector3<T> GetPosition()const;
 		void AddToTranslation(const Vector3<T>& aVector3);
 
 	private:
@@ -335,9 +336,9 @@ namespace CommonUtilities
 	}
 
 	template<class T>
-	inline Vector3<T> Matrix4x4<T>::GetForward()
+	inline Vector3<T> Matrix4x4<T>::GetForward() const
 	{
-		Vector3<T> forwardVector = { -myMatrix.oneDim[8],-myMatrix.oneDim[9],-myMatrix.oneDim[10] };
+		Vector3<T> forwardVector = { myMatrix.oneDim[8],myMatrix.oneDim[9],myMatrix.oneDim[10] };
 		return forwardVector;
 	}
 
@@ -357,11 +358,17 @@ namespace CommonUtilities
 	}
 
 	template<class T>
+	inline Vector3<T> Matrix4x4<T>::GetPosition() const
+	{
+		return Vector3<T>(myMatrix.oneDim[12], myMatrix.oneDim[13], myMatrix.oneDim[14]);
+	}
+
+	template<class T>
 	inline void Matrix4x4<T>::AddToTranslation(const Vector3<T>& aVector3)
 	{
-		myMatrix.oneDim[12]+=aVector3.x;
-		myMatrix.oneDim[13]+=aVector3.y;
-		myMatrix.oneDim[14]+=aVector3.z;
+		myMatrix.oneDim[12] += aVector3.x;
+		myMatrix.oneDim[13] += aVector3.y;
+		myMatrix.oneDim[14] += aVector3.z;
 	}
 
 

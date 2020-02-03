@@ -1,0 +1,4 @@
+﻿  GameWorld.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 7 Ljussatt Modell\Source\Source\Game\GameWorld.cpp(113,6): warning C4189:  'objectIndex': local variable is initialized but not referenced
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 7 Ljussatt Modell\Source\Source\Game\GameWorld.cpp(134,53): warning C4267:  'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Game.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 7 Ljussatt Modell\Source\Source\..\Lib\Game_Release.lib

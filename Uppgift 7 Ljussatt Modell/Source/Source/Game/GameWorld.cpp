@@ -16,6 +16,8 @@
 CGameWorld::CGameWorld()
 {
 	myCamera = new Camera();
+	mySpecBool = true;
+	myDiffBool = true;
 }
 
 
@@ -43,7 +45,7 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 
 	if (aInputHandler.CheckIfKeyIsHeld('W'))
 	{
-		myCamera->MoveCamera(cameraTransform.GetForward() * (-1 * myCamera->GetSpeed() * aTimeDelta));
+		myCamera->MoveCamera(cameraTransform.GetForward() * (myCamera->GetSpeed() * aTimeDelta));
 	}
 	if (aInputHandler.CheckIfKeyIsHeld('A'))
 	{
@@ -51,7 +53,7 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 	}
 	if (aInputHandler.CheckIfKeyIsHeld('S'))
 	{
-		myCamera->MoveCamera(cameraTransform.GetForward() * (myCamera->GetSpeed() * aTimeDelta));
+		myCamera->MoveCamera(cameraTransform.GetForward() * (-1*myCamera->GetSpeed() * aTimeDelta));
 	}
 	if (aInputHandler.CheckIfKeyIsHeld('D'))
 	{
@@ -59,12 +61,12 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 	}
 	if (aInputHandler.CheckIfKeyIsHeld(VK_RIGHT))
 	{
-		CommonUtilities::Matrix4x4<float> rotation(CommonUtilities::Matrix4x4<float>::CreateRotationAroundY(myCamera->GetSpeed() * aTimeDelta));
+		CommonUtilities::Matrix4x4<float> rotation(CommonUtilities::Matrix4x4<float>::CreateRotationAroundY(myCamera->GetRotationSpeed() * aTimeDelta));
 		myCamera->RotateCamera(rotation);
 	}
 	if (aInputHandler.CheckIfKeyIsHeld(VK_LEFT))
 	{
-		CommonUtilities::Matrix4x4<float> rotation(CommonUtilities::Matrix4x4<float>::CreateRotationAroundY(-1 * myCamera->GetSpeed() * aTimeDelta));
+		CommonUtilities::Matrix4x4<float> rotation(CommonUtilities::Matrix4x4<float>::CreateRotationAroundY(-1 * myCamera->GetRotationSpeed() * aTimeDelta));
 		myCamera->RotateCamera(rotation);
 	}
 
@@ -78,10 +80,20 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 		myCamera->MoveCamera(cameraTransform.GetUp() * (-1 * myCamera->GetSpeed() * aTimeDelta));
 	}
 
+	if (aInputHandler.CheckIfKeyIsPressed('1'))
+	{
+		myDiffBool = !myDiffBool;
+	}
+
+	if (aInputHandler.CheckIfKeyIsPressed('2'))
+	{
+		mySpecBool = !mySpecBool;
+	}
+
 	// Update all the things
 	for (size_t i = 0; i < myPotatoes.size(); i++)
 	{
-		myPotatoes[i]->UpdatePotato(myCamera);
+		myPotatoes[i]->UpdatePotato(myCamera,mySpecBool,myDiffBool);
 	}
 	std::sort(myPotatoes.begin(), myPotatoes.end(), Potato::ComparePotatoes);
 }
@@ -116,14 +128,17 @@ void CGameWorld::ReadObjectDataFromFile(const std::string& FilePath, std::vector
 void CGameWorld::AddModelPoints(const std::vector<ObjectData>& aObjectDataList, std::vector<Potato*>& aPotatoList)
 {
 	CommonUtilities::Vector4<float> position;
+	CommonUtilities::Vector3<float> normal;
 	for (unsigned int i = 0; i < aObjectDataList.size(); i++)
 	{
 		int valueSize = aObjectDataList[i].myValues.size();
 
 		position = { aObjectDataList[i].myValues[0], aObjectDataList[i].myValues[1], aObjectDataList[i].myValues[2], 1.f };
 
+		normal = { aObjectDataList[i].myValues[3], aObjectDataList[i].myValues[4], aObjectDataList[i].myValues[5] };
+
 		Tga2D::CColor color = Tga2D::CColor(aObjectDataList[i].myValues[valueSize - 3]/255, aObjectDataList[i].myValues[valueSize - 2] / 255, aObjectDataList[i].myValues[valueSize - 1] / 255, 1.f);
-		aPotatoList.push_back(new Potato(position, color));
+		aPotatoList.push_back(new Potato(position,normal, color));
 	}
 }
 

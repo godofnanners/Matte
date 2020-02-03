@@ -7,6 +7,7 @@ void Camera::Init()
 {
 	myTransform.AddToTranslation({0,0,-20});
 	mySpeed = 4.f;
+	myRotationSpeed = 1.f;
 	myNearPlane = 1.f;
 	myFarPlane = 50.f;
 	float screenWidth = static_cast<float>(Tga2D::CEngine::GetInstance()->GetRenderSize().x);
@@ -64,7 +65,18 @@ float Camera::GetSpeed() const
 	return mySpeed;
 }
 
+float Camera::GetRotationSpeed() const
+{
+	return myRotationSpeed;
+}
+
+
 const CommonUtilities::Matrix4x4<float>& Camera::GetTransform() const
 {
 	return myTransform;
+}
+
+const CommonUtilities::Vector3<float> Camera::GetPosition() const
+{
+	return myTransform.GetPosition();
 }

@@ -4,7 +4,6 @@ namespace CommonUtilities
 {
 	bool InputHandler::UpdateEvents(UINT message, WPARAM wParam, LPARAM lParam)
 	{
-		ResetEvents();
 		switch (message)
 		{
 			//Keyboard Input

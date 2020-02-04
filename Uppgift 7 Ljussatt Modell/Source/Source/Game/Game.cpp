@@ -87,5 +87,5 @@ void CGame::UpdateCallBack()
 {
 	myGameWorld.Update(Tga2D::CEngine::GetInstance()->GetDeltaTime(),myInputHandler);
 	myGameWorld.Render();
-
+	myInputHandler.ResetEvents();
 }

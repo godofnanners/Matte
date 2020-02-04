@@ -69,27 +69,24 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 		CommonUtilities::Matrix4x4<float> rotation(CommonUtilities::Matrix4x4<float>::CreateRotationAroundY(-1 * myCamera->GetRotationSpeed() * aTimeDelta));
 		myCamera->RotateCamera(rotation);
 	}
-
 	if (aInputHandler.CheckIfKeyIsHeld(VK_UP))
 	{
 		myCamera->MoveCamera(cameraTransform.GetUp() * (myCamera->GetSpeed() * aTimeDelta));
 	}
-
 	if (aInputHandler.CheckIfKeyIsHeld(VK_DOWN))
 	{
 		myCamera->MoveCamera(cameraTransform.GetUp() * (-1 * myCamera->GetSpeed() * aTimeDelta));
 	}
-
 	if (aInputHandler.CheckIfKeyIsPressed('1'))
 	{
 		myDiffBool = !myDiffBool;
 	}
-
 	if (aInputHandler.CheckIfKeyIsPressed('2'))
 	{
 		mySpecBool = !mySpecBool;
 	}
 
+	
 	// Update all the things
 	for (size_t i = 0; i < myPotatoes.size(); i++)
 	{

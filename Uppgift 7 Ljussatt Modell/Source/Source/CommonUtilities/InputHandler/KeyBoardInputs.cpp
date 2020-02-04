@@ -18,6 +18,10 @@ void KeyBoardInputs::SetPressedAndHeldKeys(int aKeyCode, LPARAM lParam)
 	{
 		myPressedKeys[aKeyCode] = true;
 	}
+	else
+	{
+		myPressedKeys[aKeyCode] = false;
+	}
 	myHeldDownKeys[aKeyCode] = true;
 }
 

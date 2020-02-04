@@ -1,1 +1,4 @@
-﻿  CommonUtilities.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 7 Ljussatt Modell\Source\Source\x64\Release\CommonUtilities.lib
+﻿  InputHandler.cpp
+  KeyBoardInputs.cpp
+C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 7 Ljussatt Modell\Source\Source\CommonUtilities\InputHandler\KeyBoardInputs.cpp(5,24): warning C4244:  'argument': conversion from 'WPARAM' to 'int', possible loss of data
+  CommonUtilities.vcxproj -> C:\Users\casper.martensson\Documents\GitHub\Matte\Uppgift 7 Ljussatt Modell\Source\Source\x64\Release\CommonUtilities.lib

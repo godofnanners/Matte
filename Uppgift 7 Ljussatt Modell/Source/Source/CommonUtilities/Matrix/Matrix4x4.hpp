@@ -37,9 +37,10 @@ namespace CommonUtilities
 		// Assumes aTransform is made up of nothing but rotations and translations.
 		static Matrix4x4<T> GetFastInverse(const Matrix4x4<T>& aTransform);
 		Vector3<T> GetForward()const;
-		Vector3<T> GetRight();
-		Vector3<T> GetUp();
+		Vector3<T> GetRight()const;
+		Vector3<T> GetUp()const;
 		Vector3<T> GetPosition()const;
+		Vector4<T> GetDirectionOrPosition()const;
 		void AddToTranslation(const Vector3<T>& aVector3);
 
 	private:
@@ -343,7 +344,7 @@ namespace CommonUtilities
 	}
 
 	template<class T>
-	inline Vector3<T> Matrix4x4<T>::GetRight()
+	inline Vector3<T> Matrix4x4<T>::GetRight() const
 	{
 		Vector3<T> rightVector = { myMatrix.oneDim[0],myMatrix.oneDim[1],myMatrix.oneDim[2] };
 
@@ -351,7 +352,7 @@ namespace CommonUtilities
 	}
 
 	template<class T>
-	inline Vector3<T> Matrix4x4<T>::GetUp()
+	inline Vector3<T> Matrix4x4<T>::GetUp() const
 	{
 		Vector3<T> upVector = { myMatrix.oneDim[4],myMatrix.oneDim[5],myMatrix.oneDim[6] };
 		return upVector;
@@ -361,6 +362,12 @@ namespace CommonUtilities
 	inline Vector3<T> Matrix4x4<T>::GetPosition() const
 	{
 		return Vector3<T>(myMatrix.oneDim[12], myMatrix.oneDim[13], myMatrix.oneDim[14]);
+	}
+
+	template<class T>
+	inline Vector4<T> Matrix4x4<T>::GetDirectionOrPosition() const
+	{
+		return Vector4<T>(myMatrix.oneDim[12], myMatrix.oneDim[13], myMatrix.oneDim[14], myMatrix.oneDim[15]);
 	}
 
 	template<class T>

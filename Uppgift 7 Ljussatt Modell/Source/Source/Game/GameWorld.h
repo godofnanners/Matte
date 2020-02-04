@@ -5,7 +5,7 @@
 
 class Potato;
 class Camera;
-
+class Lighting;
 namespace Tga2D
 {
 	class CSprite;
@@ -42,6 +42,7 @@ private:
 	std::vector<Potato*> myPotatoes;
 	std::vector<ObjectData> myObjectData;
 	Camera* myCamera;
+	Lighting* myLighting;
 	bool mySpecBool;
 	bool myDiffBool;
 };

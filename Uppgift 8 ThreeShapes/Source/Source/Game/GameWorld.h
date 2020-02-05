@@ -5,7 +5,8 @@
 
 class Potato;
 class Camera;
-
+class Cube;
+class Sphere;
 namespace Tga2D
 {
 	class CSprite;
@@ -17,14 +18,7 @@ namespace CommonUtilities
 	class InputHandler;
 }
 
-struct ObjectData
-{
-	ObjectData(std::array<float, 11>aValueList) :myValues(aValueList)
-	{
 
-	}
-	std::array<float, 11> myValues = { 0 };
-};
 
 
 class CGameWorld
@@ -35,11 +29,9 @@ public:
 
 	void Init();
 	void Update(float aTimeDelta, CommonUtilities::InputHandler aInputHandler);
-	void ReadObjectDataFromFile(const std::string& FilePath, std::vector<ObjectData>& aObjectList);
-	void AddModelPoints(const std::vector<ObjectData>& aObjectDataList, std::vector<Potato*>& aPotatoList);
 	void Render();
 private:
-	std::vector<Potato*> myPotatoes;
-	std::vector<ObjectData> myObjectData;
+	Cube * myCube;
+	Sphere* mySphere;
 	Camera* myCamera;
 };

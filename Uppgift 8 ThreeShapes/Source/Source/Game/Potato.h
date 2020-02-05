@@ -6,8 +6,6 @@ namespace Tga2D
 {
 	class CSprite;
 	class CColor;
-	class FBXModel;
-	class CAudio;
 }
 
 class Potato
@@ -18,6 +16,8 @@ public:
 	~Potato();
 
 	void Render(const float aNear, const float aFar)const;
+	void SetPosition(const CommonUtilities::Vector4<float>& aNewPosition);
+	const CommonUtilities::Vector4<float>& GetPosition();
 	void UpdatePotato(const Camera* aCamera);
 
 	static bool ComparePotatoes(const Potato* aPotato, const Potato* aSecondPotato);

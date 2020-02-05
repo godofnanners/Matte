@@ -3,7 +3,7 @@
 #include "tga2d/sprite/sprite.h"
 #include "Macro.h"
 Potato::Potato(const CommonUtilities::Vector4<float>& aPosition) :
-	mySprite(new Tga2D::CSprite("sprites/White pixel.png"))
+	mySprite(new Tga2D::CSprite("sprites/White_pixel.dds"))
 {
 	myPosition = aPosition;
 	myZDistance = 0;
@@ -31,6 +31,16 @@ void Potato::Render(const float aNear, const float aFar) const
 	{
 		mySprite->Render();
 	}
+}
+
+void Potato::SetPosition(const CommonUtilities::Vector4<float>&aNewPosition)
+{
+	myPosition = aNewPosition;
+}
+
+const CommonUtilities::Vector4<float>& Potato::GetPosition()
+{
+	return myPosition;
 }
 
 void Potato::UpdatePotato(const Camera * aCamera)

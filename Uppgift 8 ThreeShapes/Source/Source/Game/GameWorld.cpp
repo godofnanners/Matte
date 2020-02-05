@@ -13,9 +13,13 @@
 #include <iomanip>
 #include <iostream>
 #include <Macro.h>
+#include "Cube.h"
+#include "Sphere.h"
 CGameWorld::CGameWorld()
 {
 	myCamera = new Camera();
+	myCube = new Cube();
+	mySphere = new Sphere();
 }
 
 
@@ -26,7 +30,9 @@ CGameWorld::~CGameWorld()
 
 void CGameWorld::Init()
 {
-	myCamera->Init();	
+	myCamera->Init();
+	myCube->Init(10, 0.9f, CommonUtilities::Vector4<float>(0, 0, 0,1));
+	mySphere->Init(4, 20, CommonUtilities::Vector4<float>(10, 0, 0,1));
 }
 
 
@@ -70,60 +76,29 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 	{
 		myCamera->MoveCamera(cameraTransform.GetUp() * (-1 * myCamera->GetSpeed() * aTimeDelta));
 	}
-
+	if (aInputHandler.CheckIfKeyIsHeld('T'))
+	{
+		mySphere->Rotate(myCube->X, 5.f);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('G'))
+	{
+		mySphere->Rotate(myCube->Y, 5.f);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('B'))
+	{
+		mySphere->Rotate(myCube->Z, 5.f);
+	}
 	// Update all the things
-	for (size_t i = 0; i < myPotatoes.size(); i++)
-	{
-		myPotatoes[i]->UpdatePotato(myCamera);
-	}
-	std::sort(myPotatoes.begin(), myPotatoes.end(), Potato::ComparePotatoes);
+	mySphere->UpdatePoints(myCamera);
+	myCube->UpdatePoints(myCamera);
 }
 
-void CGameWorld::ReadObjectDataFromFile(const std::string& FilePath, std::vector<ObjectData>& aObjectList)
-{
-	std::ifstream inFile;
 
-	inFile.open(FilePath);
-	if (!inFile)
-	{
-		std::cout << "Unable to open file";
-		exit(1); // terminate with error
-	}
 
-	int valuesIndex = 0;
-	int objectIndex = 0;
-	std::array<float, 11> valueList;
-	while (inFile >> valueList[valuesIndex])
-	{
-		valuesIndex++;
-		if (valuesIndex >= valueList.size())
-		{
-			aObjectList.push_back(ObjectData(valueList));
-			valuesIndex = 0;
-		}
-	}
 
-	inFile.close();
-}
-
-void CGameWorld::AddModelPoints(const std::vector<ObjectData>& aObjectDataList, std::vector<Potato*>& aPotatoList)
-{
-	CommonUtilities::Vector4<float> position;
-	for (unsigned int i = 0; i < aObjectDataList.size(); i++)
-	{
-		int valueSize = aObjectDataList[i].myValues.size();
-
-		position = { aObjectDataList[i].myValues[0], aObjectDataList[i].myValues[1], aObjectDataList[i].myValues[2], 1.f };
-
-		Tga2D::CColor color = Tga2D::CColor(aObjectDataList[i].myValues[valueSize - 3]/255, aObjectDataList[i].myValues[valueSize - 2] / 255, aObjectDataList[i].myValues[valueSize - 1] / 255, 1.f);
-		aPotatoList.push_back(new Potato(position, color));
-	}
-}
 
 void CGameWorld::Render()
 {
-	for (int i = 0; i < myPotatoes.size(); i++)
-	{
-		myPotatoes[i]->Render(myCamera->GetNearPlane(), myCamera->GetFarPlane());
-	}
+	myCube->Render(myCamera->GetNearPlane(), myCamera->GetFarPlane());
+	mySphere->Render(myCamera->GetNearPlane(), myCamera->GetFarPlane());
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <math.h>
 #include <assert.h>
+#include <Vector/Vector3.hpp>
 namespace CommonUtilities
 {
 	template <class T>
@@ -203,6 +204,14 @@ namespace CommonUtilities
 		Vector4<T> CombinedVectors = CommonUtilities::Vector4<T>(x, y, z, w);
 		return CombinedVectors;
 	}
+	template <class T> Vector4<T> operator+(const Vector4<T>& aVector4, const Vector3<T>& aVector3)
+	{
+		T x = aVector4.x + aVector3.x;
+		T y = aVector4.y + aVector3.y;
+		T z = aVector4.z + aVector3.z;
+		
+		return CommonUtilities::Vector4<T>(x, y, z, aVector4.w);
+	}
 	//Returns the vector difference of aVector0 and aVector1
 	template <class T> Vector4<T> operator-(const Vector4<T>& aVector0, const Vector4<T>& aVector1)
 	{
@@ -279,4 +288,4 @@ namespace CommonUtilities
 	}
 
 
-}
+}

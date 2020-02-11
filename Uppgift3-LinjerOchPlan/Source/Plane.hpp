@@ -50,22 +50,23 @@ namespace CommonUtilities
 	inline void Plane<T>::InitWith3Points(const Vector3<T>& aPoint0, const Vector3<T>& aPoint1, const Vector3<T>& aPoint2)
 	{
 		Vector3<T> AB = aPoint1 - aPoint0;
-		Vector3<T> BC = aPoint1 - aPoint2;
+		Vector3<T> AC = aPoint2 - aPoint0;
 
-		myNormal = (AB.Cross(BC)).Normalize();
+		myNormal = AB.Cross(AC);
+		myNormal.Normalize();
 		myPoint = aPoint0;
 	}
 	template<class T>
 	inline void Plane<T>::InitWithPointAndNormal(const Vector3<T>& aPoint, const Vector3<T>& aNormal)
 	{
-		myPoint = aPoint0;
+		myPoint = aPoint;
 		myNormal = aNormal;
 	}
 	template<class T>
 	inline bool Plane<T>::IsInside(const Vector3<T>& aPosition) const
 	{
 		Vector3<T> pointsVector = aPosition - myPoint;
-		if (pointsVector.Dot(myNormal)<=0)
+		if (pointsVector.Dot(myNormal) <= 0)
 		{
 			return true;
 		}

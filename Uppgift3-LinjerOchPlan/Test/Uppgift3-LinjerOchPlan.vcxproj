@@ -171,6 +171,7 @@
     <ClCompile Include="TestPlane.cpp" />
     <ClCompile Include="TestPlaneVolume.cpp" />
     <ClCompile Include="Uppgift3-LinjerOchPlan.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Line.hpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="..\Source\Vector4.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Utility.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Uppgift3-LinjerOchPlan.rc" />

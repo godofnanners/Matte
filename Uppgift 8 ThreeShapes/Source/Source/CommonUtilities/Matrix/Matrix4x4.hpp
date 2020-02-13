@@ -25,7 +25,7 @@ namespace CommonUtilities
 		Matrix4x4<T> operator*(Matrix4x4<T>& aMatrix);
 		Matrix4x4<T> operator*(const Matrix4x4<T>& aMatrix)const;
 		void operator*=(Matrix4x4<T>& aMatrix);
-		Vector4<T> operator*(Vector4<T>& aVector4);
+		Matrix4x4<T> operator*(Vector4<T>& aVector4);
 		void operator=(Matrix4x4<T>& aMatrix);
 		bool operator==(const Matrix4x4<T>& aMatrixlhs)const;
 		// Static functions for creating rotation matrices.
@@ -195,23 +195,22 @@ namespace CommonUtilities
 	}
 
 	template<class T>
-	inline Vector4<T> Matrix4x4<T>::operator*(Vector4<T>& aVector4)
+	inline Matrix4x4<T> Matrix4x4<T>::operator*(Vector4<T>& aVector4)
 	{
-		Vector4<T>multVector;
-		int multMatIndex = 0;
+		Matrix4x4<T>multMatrix;
+		int multMatrixIndex = 0;
 		T sum = 0;
 		for (int lMatRow = 0; lMatRow < MATRIX_FOUR_TWODIM_SIZE; lMatRow++)
 		{
 			sum = 0;
-			for (int lMatColrVectorRow = 0; lMatColrVectorRow < twoDimSize; lMatColrVectorRow++)
+			for (int lMatColrVectorRow = 0; lMatColrVectorRow < MATRIX_FOUR_TWODIM_SIZE; lMatColrVectorRow++)
 			{
-				sum += myMatrix.twoDim[lMatRow][lMatColrMatRow] * aVector[lMatColrVectorRow];
+				multMatrix.oneDim[multMatrixIndex] = myMatrix.twoDim[lMatRow][lMatColrVectorRow] * aVector4[lMatColrVectorRow];
+				++multMatrixIndex;
 			}
-			multVector[multVectorIndex] = sum;
-			++multVectorIndex;
 		}
 
-		return multVector;
+		return multMatrix;
 	}
 
 	template<class T>

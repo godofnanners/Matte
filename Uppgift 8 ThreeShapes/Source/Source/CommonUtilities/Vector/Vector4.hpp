@@ -1,7 +1,7 @@
 #pragma once
 #include <math.h>
 #include <assert.h>
-#include <Vector/Vector3.hpp>
+#include "Vector3.hpp"
 namespace CommonUtilities
 {
 	template <class T>

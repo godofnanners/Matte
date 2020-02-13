@@ -4,16 +4,39 @@
 #include <algorithm>
 void Cube::Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector4<float> aStartPositon)
 {
-	myMatrix.AddToTranslation(CommonUtilities::Vector3<float>(aStartPositon.x, aStartPositon.y, aStartPositon.z));
-	for (float width = 0; width < aSide; width++)
+	mySide = aSide;
+	mySpaceBetweenPoints = aSpaceBetweenPoints;
+	myStartPosition = aStartPositon;
+	
+	for (float width = 0; width < mySide; width++)
 	{
-		for (float height = 0; height < aSide; height++)
+		for (float height = 0; height < mySide; height++)
 		{
-			for (float depth = 0; depth < aSide; depth++)
+			for (float depth = 0; depth < mySide; depth++)
 			{
-				if (height == 0 || width == 0 || height == aSide - 1 || width == aSide - 1 || depth == 0 || depth == aSide - 1)
+				if (height == 0 || width == 0 || height == mySide - 1 || width == mySide - 1 || depth == 0 || depth == mySide - 1)
 				{
-					myPotatoes.push_back(new Potato((CommonUtilities::Vector4<float>(aSpaceBetweenPoints * width, aSpaceBetweenPoints * height, aSpaceBetweenPoints * depth, 1) + aStartPositon)));
+					myPotatoes.push_back(new Potato((CommonUtilities::Vector4<float>(0,0,0,0))));
+				}
+			}
+		}
+	}
+
+}
+
+void Cube::Update()
+{
+	int index = 0;
+	for (float width = 0; width < mySide; width++)
+	{
+		for (float height = 0; height < mySide; height++)
+		{
+			for (float depth = 0; depth < mySide; depth++)
+			{
+				if (height == 0 || width == 0 || height == mySide - 1 || width == mySide - 1 || depth == 0 || depth == mySide - 1)
+				{
+					myPotatoes[index]->SetPosition((CommonUtilities::Vector4<float>(mySpaceBetweenPoints * width, mySpaceBetweenPoints * height, mySpaceBetweenPoints * depth, 1)+myStartPosition)*myMatrix);
+					index++;
 				}
 			}
 		}
@@ -24,7 +47,6 @@ void Cube::Render(const float aNear, const float aFar)
 {
 	for (int i = 0; i < myPotatoes.size(); i++)
 	{
-		myPotatoes[i]->SetPosition(myPotatoes[i]->GetPosition() * myMatrix);
 		myPotatoes[i]->Render(aNear, aFar);
 	}
 }

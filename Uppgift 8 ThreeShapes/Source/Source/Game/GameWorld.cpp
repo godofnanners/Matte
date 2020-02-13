@@ -78,24 +78,34 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 	}
 	if (aInputHandler.CheckIfKeyIsHeld('T'))
 	{
-		mySphere->Rotate(myCube->X, 5.f);
+		myCube->Rotate(myCube->X, 1.f * aTimeDelta);
 	}
 	if (aInputHandler.CheckIfKeyIsHeld('G'))
 	{
-		mySphere->Rotate(myCube->Y, 5.f);
+		myCube->Rotate(myCube->Y, 1.f * aTimeDelta);
 	}
 	if (aInputHandler.CheckIfKeyIsHeld('B'))
 	{
-		mySphere->Rotate(myCube->Z, 5.f);
+		myCube->Rotate(myCube->Z, 1.f*aTimeDelta);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('Y'))
+	{
+		mySphere->Rotate(myCube->X, 1.f * aTimeDelta);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('H'))
+	{
+		mySphere->Rotate(myCube->Y, 1.f * aTimeDelta);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('N'))
+	{
+		mySphere->Rotate(myCube->Z, 1.f * aTimeDelta);
 	}
 	// Update all the things
+	mySphere->Update();
+	myCube->Update();
 	mySphere->UpdatePoints(myCamera);
 	myCube->UpdatePoints(myCamera);
 }
-
-
-
-
 
 void CGameWorld::Render()
 {

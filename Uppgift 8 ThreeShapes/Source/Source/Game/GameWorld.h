@@ -7,6 +7,7 @@ class Potato;
 class Camera;
 class Cube;
 class Sphere;
+class Torus;
 namespace Tga2D
 {
 	class CSprite;
@@ -33,5 +34,6 @@ public:
 private:
 	Cube * myCube;
 	Sphere* mySphere;
+	Torus* myTorus;
 	Camera* myCamera;
 };

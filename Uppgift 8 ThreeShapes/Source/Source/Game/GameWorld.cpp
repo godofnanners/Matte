@@ -15,11 +15,14 @@
 #include <Macro.h>
 #include "Cube.h"
 #include "Sphere.h"
+#include "Torus.h"
+
 CGameWorld::CGameWorld()
 {
 	myCamera = new Camera();
 	myCube = new Cube();
 	mySphere = new Sphere();
+	myTorus = new Torus();
 }
 
 
@@ -31,8 +34,9 @@ CGameWorld::~CGameWorld()
 void CGameWorld::Init()
 {
 	myCamera->Init();
-	myCube->Init(10, 0.9f, CommonUtilities::Vector4<float>(0, 0, 0,1));
-	mySphere->Init(4, 20, CommonUtilities::Vector4<float>(10, 0, 0,1));
+	myCube->Init(10, 0.9f, CommonUtilities::Vector4<float>(-3, 0, 0,1));
+	mySphere->Init(2.5f, 40, CommonUtilities::Vector3<float>(7, 0, 0));
+	myTorus->Init(2.5f, 2.f, 40, CommonUtilities::Vector3<float>(9, 0, 0), 40);
 }
 
 
@@ -100,15 +104,30 @@ void CGameWorld::Update(float aTimeDelta, CommonUtilities::InputHandler aInputHa
 	{
 		mySphere->Rotate(myCube->Z, 1.f * aTimeDelta);
 	}
+	if (aInputHandler.CheckIfKeyIsHeld('U'))
+	{
+		myTorus->Rotate(myCube->X, 1.f * aTimeDelta);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('J'))
+	{
+		myTorus->Rotate(myCube->Y, 1.f * aTimeDelta);
+	}
+	if (aInputHandler.CheckIfKeyIsHeld('M'))
+	{
+		myTorus->Rotate(myCube->Z, 1.f * aTimeDelta);
+	}
 	// Update all the things
+	myTorus->Update();
 	mySphere->Update();
 	myCube->Update();
 	mySphere->UpdatePoints(myCamera);
 	myCube->UpdatePoints(myCamera);
+	myTorus->UpdatePoints(myCamera);
 }
 
 void CGameWorld::Render()
 {
 	myCube->Render(myCamera->GetNearPlane(), myCamera->GetFarPlane());
 	mySphere->Render(myCamera->GetNearPlane(), myCamera->GetFarPlane());
+	myTorus->Render(myCamera->GetNearPlane(), myCamera->GetFarPlane());
 }

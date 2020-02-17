@@ -5,15 +5,15 @@
 #include "Matrix/Matrix4x4.hpp"
 #include "Matrix/Matrix3x3.hpp"
 
-void Sphere::Init(float aRadius, int anAmountOfPoints, CommonUtilities::Vector4<float> aStartPositon, int anAmountOfRows)
+void Sphere::Init(float aRadius, int anAmountOfPoints, CommonUtilities::Vector3<float> aStartPositon, int anAmountOfCircles)
 {
 	myStartPosition = aStartPositon;
 	myAmountOfPoints = anAmountOfPoints;
-	myAmountOfRows = anAmountOfRows;
+	myAmountOfCircles = anAmountOfCircles;
 	myRadius = aRadius;
 	myPointStep = (3.14159265359f * 2) / myAmountOfPoints;
 
-	for (int i = 0; i < myAmountOfPoints; i++)
+	for (int i = 0; i < myAmountOfPoints * myAmountOfCircles; i++)
 	{
 		myPotatoes.push_back(new Potato(CommonUtilities::Vector4<float>(0, 0, 0, 1)));
 	}
@@ -21,8 +21,9 @@ void Sphere::Init(float aRadius, int anAmountOfPoints, CommonUtilities::Vector4<
 
 void Sphere::Update()
 {
-	float rotationStep = (3.14159265359f * 2) / myAmountOfRows;
-	for (int j = 0; j < myAmountOfRows; j++)
+	float rotationStep = (3.14159265359f * 2) / myAmountOfCircles;
+	float potatoIndex = 0;
+	for (int j = 0; j < myAmountOfCircles; j++)
 	{
 		for (int i = 0; i < myAmountOfPoints; i++)
 		{
@@ -30,12 +31,12 @@ void Sphere::Update()
 			float y = myRadius * sin(myPointStep * i);
 			CommonUtilities::Vector4<float> CirclePoint = CommonUtilities::Vector4<float>(x, y, 0, 1);
 
-			CirclePoint = (CirclePoint * CommonUtilities::Matrix4x4<float>().CreateRotationAroundY(rotationStep * j))*myMatrix;
-			CirclePoint.x += myStartPosition.x + myRadius;
-			CirclePoint.y += myStartPosition.y + myRadius;
-			CirclePoint.z += myStartPosition.z + myRadius;
+			CirclePoint = (CirclePoint * CommonUtilities::Matrix4x4<float>().CreateRotationAroundY(rotationStep * j));
 
-			myPotatoes[i]->SetPosition(CommonUtilities::Vector4<float>(CirclePoint.x, CirclePoint.y, CirclePoint.z, 1));
+			CirclePoint = CirclePoint * myMatrix;
+
+			myPotatoes[potatoIndex]->SetPosition(CirclePoint+myStartPosition);
+			potatoIndex++;
 		}
 	}
 }

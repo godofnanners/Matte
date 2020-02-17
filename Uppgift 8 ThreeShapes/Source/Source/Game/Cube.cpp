@@ -8,13 +8,15 @@ void Cube::Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector4
 	mySpaceBetweenPoints = aSpaceBetweenPoints;
 	myStartPosition = aStartPositon;
 	
-	for (float width = 0; width < mySide; width++)
+	for (float width = myStartPosition.x-(mySide*0.5f); width < myStartPosition.x + mySide*0.5f; width++)
 	{
-		for (float height = 0; height < mySide; height++)
+		for (float height = myStartPosition.y - (mySide * 0.5f); height < mySide * 0.5f; height++)
 		{
-			for (float depth = 0; depth < mySide; depth++)
+			for (float depth = myStartPosition.z - (mySide * 0.5f); depth < mySide * 0.5f; depth++)
 			{
-				if (height == 0 || width == 0 || height == mySide - 1 || width == mySide - 1 || depth == 0 || depth == mySide - 1)
+				if (height == myStartPosition.y - (mySide * 0.5f) || width == myStartPosition.x - (mySide * 0.5f)
+					|| height == (myStartPosition.y + mySide * 0.5f) - 1 || width == (myStartPosition.x + mySide * 0.5f) - 1
+					|| depth == myStartPosition.z - (mySide * 0.5f) || depth == (myStartPosition.z + mySide * 0.5f) - 1)
 				{
 					myPotatoes.push_back(new Potato((CommonUtilities::Vector4<float>(0,0,0,0))));
 				}
@@ -27,15 +29,19 @@ void Cube::Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector4
 void Cube::Update()
 {
 	int index = 0;
-	for (float width = 0; width < mySide; width++)
+	for (float width = -(mySide * 0.5f); width < mySide * 0.5f; width++)
 	{
-		for (float height = 0; height < mySide; height++)
+		for (float height = -(mySide * 0.5f); height < mySide * 0.5f; height++)
 		{
-			for (float depth = 0; depth < mySide; depth++)
+			for (float depth = -(mySide * 0.5f); depth < mySide * 0.5f; depth++)
 			{
-				if (height == 0 || width == 0 || height == mySide - 1 || width == mySide - 1 || depth == 0 || depth == mySide - 1)
+				if (height == -(mySide * 0.5f) || width == -(mySide * 0.5f) 
+					|| height == (mySide * 0.5f)-1|| width == (mySide * 0.5f)-1
+					|| depth == -(mySide * 0.5f) || (depth == mySide * 0.5f-1))
 				{
-					myPotatoes[index]->SetPosition((CommonUtilities::Vector4<float>(mySpaceBetweenPoints * width, mySpaceBetweenPoints * height, mySpaceBetweenPoints * depth, 1)+myStartPosition)*myMatrix);
+					CommonUtilities::Vector4<float> position = CommonUtilities::Vector4<float>(mySpaceBetweenPoints * width, mySpaceBetweenPoints * height, mySpaceBetweenPoints * depth, 1);
+					position = position * myMatrix;
+					myPotatoes[index]->SetPosition(position+myStartPosition);
 					index++;
 				}
 			}

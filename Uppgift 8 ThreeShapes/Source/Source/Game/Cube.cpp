@@ -2,7 +2,7 @@
 #include "Cube.h"
 #include "Vector/Vector4.hpp"
 #include <algorithm>
-void Cube::Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector4<float> aStartPositon)
+void Cube::Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector3<float> aStartPositon)
 {
 	mySide = aSide;
 	mySpaceBetweenPoints = aSpaceBetweenPoints;
@@ -18,7 +18,7 @@ void Cube::Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector4
 					|| height == (myStartPosition.y + mySide * 0.5f) - 1 || width == (myStartPosition.x + mySide * 0.5f) - 1
 					|| depth == myStartPosition.z - (mySide * 0.5f) || depth == (myStartPosition.z + mySide * 0.5f) - 1)
 				{
-					myPotatoes.push_back(new Potato((CommonUtilities::Vector4<float>(0,0,0,0))));
+					myPotatoes.push_back(new Potato((CommonUtilities::Vector4<float>(0,0,0,1))));
 				}
 			}
 		}

@@ -32,10 +32,9 @@ void Sphere::Update()
 			CommonUtilities::Vector4<float> CirclePoint = CommonUtilities::Vector4<float>(x, y, 0, 1);
 
 			CirclePoint = (CirclePoint * CommonUtilities::Matrix4x4<float>().CreateRotationAroundY(rotationStep * j));
-
 			CirclePoint = CirclePoint * myMatrix;
 
-			myPotatoes[potatoIndex]->SetPosition(CirclePoint+myStartPosition);
+			myPotatoes[potatoIndex]->SetPosition(CirclePoint + myStartPosition);
 			potatoIndex++;
 		}
 	}

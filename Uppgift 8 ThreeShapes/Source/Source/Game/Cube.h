@@ -5,12 +5,12 @@
 class Cube :public Shape
 {
 public:
-	void Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector4<float> aStartPositon);
+	void Init(float aSide, float aSpaceBetweenPoints, CommonUtilities::Vector3<float> aStartPositon);
 	void Update();
 	void Render(const float aNear, const float aFar);
 private:
 	float mySide;
 	float mySpaceBetweenPoints;
-	CommonUtilities::Vector4<float> myStartPosition;
+	CommonUtilities::Vector3<float> myStartPosition;
 };
 

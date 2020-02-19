@@ -34,9 +34,9 @@ CGameWorld::~CGameWorld()
 void CGameWorld::Init()
 {
 	myCamera->Init();
-	myCube->Init(10, 0.9f, CommonUtilities::Vector4<float>(-3, 0, 0,1));
-	mySphere->Init(2.5f, 40, CommonUtilities::Vector3<float>(7, 0, 0));
-	myTorus->Init(2.5f, 2.f, 40, CommonUtilities::Vector3<float>(9, 0, 0), 40);
+	myCube->Init(15, 0.3f, CommonUtilities::Vector3<float>(-10, 0, 0));
+	mySphere->Init(2.5f, 41, CommonUtilities::Vector3<float>(0, 0, 0),40);
+	myTorus->Init(1.f, 2.f, 40, CommonUtilities::Vector3<float>(10, 0, 0), 40);
 }
 
 
